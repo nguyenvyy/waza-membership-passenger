@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <Router>
-          <Suspense fallback={() => 'loading...'}>
+          <Suspense fallback="...loading">
             <Switch>
               {routes.map((route, index) => <RouteWithSubRoutes key={index} {...route} />)}
             </Switch>
