@@ -18,7 +18,7 @@ export const configStore = (preloadedState) => {
     const composEnhancer = compose(...enhancer);
     const store = createStore(rootReducer, composEnhancer);
     if (process.env.NODE_ENV !== 'production' && module.hot) {
-        module.hot.accept('../reducers/root-reducer', () => store.replaceReducer(rootReducer))
+        module.hot.accept('./reducers/root', () => store.replaceReducer(rootReducer))
     }
     return store;
 }
