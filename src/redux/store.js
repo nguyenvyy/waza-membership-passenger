@@ -12,13 +12,13 @@ export const configStore = (preloadedState) => {
     
     const enhancer = [
         middlwareEnhancer,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     ]
 
     const composEnhancer = compose(...enhancer);
     const store = createStore(rootReducer, composEnhancer);
-    if (process.env.NODE_ENV !== 'production' && module.hot) {
-        module.hot.accept('./reducers/root', () => store.replaceReducer(rootReducer))
-    }
+    // if (process.env.NODE_ENV !== 'production' && module.hot) {
+    //     module.hot.accept('./reducers/root', () => store.replaceReducer(rootReducer))
+    // }
     return store;
 }

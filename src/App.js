@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import 'antd/dist/antd.css';
+
 import './App.scss';
 import { configStore } from './redux/store';
 import { routes } from './config/route-config';
