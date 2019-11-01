@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "waza-membership"
+  },
+  "targets": {
+    "waza-membership": {
+      "hosting": {
+        "passenger": [
+          "waza-membership"
+        ]
+      }
+    }
+  }
+}
