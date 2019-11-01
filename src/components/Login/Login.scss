@@ -1,0 +1,13 @@
+.login {
+	height: 100vh;
+	& .header {
+		flex-direction: column;
+		height: 30%;
+	}
+	& .body {
+		padding: 20px;
+	}
+	& .footer {
+		height: 20%;
+	}
+}

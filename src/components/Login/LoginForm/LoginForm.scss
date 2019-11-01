@@ -1,0 +1,11 @@
+.login-form {
+    font-size: 0.8em;
+    & .login-form-button {
+        width: 100%;
+        font-size: 1.15em;
+        height: 40px;
+    }
+    & .login-form-text {
+        font-size: 1.15em;
+    }
+}
