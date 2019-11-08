@@ -10,20 +10,20 @@ export const NavBar = () => {
         <nav className="bottom-nav">
             <div className="bottom-nav__item">
                 <NavLink to="/p/home" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active" >
-                    <Icon type="home" theme="filled" />
+                    <Icon type="home"  />
                     <span>Trang chủ</span>
                 </NavLink>
             </div>
             <div className="bottom-nav__item">
-                <NavLink to="/p/voucher" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active">
-                    <Icon type="weibo-circle" theme="filled" />
-                    <span>Voucher</span>
+                <NavLink to="/p/active" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active">
+                    <Icon type="unordered-list" />
+                    <span>Hoạt dộng</span>
                 </NavLink>
             </div>
             <div className="bottom-nav__item">
-                <NavLink to="/p/combo" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active">
-                    <Icon type="codepen-square" theme="filled" />
-                    <span>Combo</span>
+                <NavLink to="/p/notification" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active">
+                    <Icon type="notification"  />
+                    <span>Thông báo</span>
                 </NavLink>
             </div>
             <div className="bottom-nav__item">
