@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import 'antd/dist/antd.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import './App.scss';
 import { configStore } from './redux/store';

@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom'
 import './NavBar.scss'
 import { Icon } from 'antd'
 
-export const NavBar = () => {
+export const NavBar = ({collapsed}) => {
 
     return (
-        <nav className="bottom-nav">
+        <nav className={`bottom-nav ${collapsed ? 'bottom-nav--collapsed' : ''}`}>
             <div className="bottom-nav__item">
                 <NavLink to="/p/home" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active" >
                     <Icon type="home"  />

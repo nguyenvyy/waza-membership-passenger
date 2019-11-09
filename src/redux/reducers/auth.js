@@ -1,7 +1,13 @@
 import { LOGIN, LOGOUT, STOP_REQUEST, SEND_REQUEST } from "../actions/auth/types"
 
 const initState = {
-    user: null,
+    user: {
+        name: 'Nguyên Vy',
+        wallet: {
+            balance: 400000,
+            id: 'x'
+        }
+    },
     isLoggedIn: true,
     isLoading: false
 }
