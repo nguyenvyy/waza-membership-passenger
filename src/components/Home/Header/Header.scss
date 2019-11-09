@@ -1,0 +1,11 @@
+.header {
+	background-image: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);    
+	min-height: 70px;	
+	&__title {
+		text-align: center;
+		padding: 10px 0;
+        color: white;
+		font-weight: 600;
+		margin: 0;
+	}
+}

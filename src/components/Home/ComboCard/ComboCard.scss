@@ -1,0 +1,26 @@
+.combo-card {
+	padding: 10px;
+	&__body {
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		& .content {
+			padding: 5px;
+			overflow: hidden;
+		}
+	}
+	&__footer {
+		display: flex;
+		justify-content: center;
+        align-items: center;
+        margin-bottom: 2px;
+		& .link {
+			background: #5e35b1;
+			color: white;
+			text-align: center;
+			padding: 4px 10px;
+			border-radius: 2px;
+		}
+	}
+}
