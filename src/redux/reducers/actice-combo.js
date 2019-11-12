@@ -1,9 +1,10 @@
-import { REQUEST_ACTIVE_COMBOS, STOP_REQUEST_ACTIVE_COMBOS, RECEIVE_ACTIVE_COMBOS, RECEIVE_DETAIL_COMBO } from "../actions/active-combos/types"
+import { REQUEST_ACTIVE_COMBOS, STOP_REQUEST_ACTIVE_COMBOS, RECEIVE_ACTIVE_COMBOS, RECEIVE_DETAIL_COMBO, RECEIVE_POLICIES } from "../actions/active-combos/types"
 
 const initState = {
     items: [],
     detail: null,
     isFetching: false,
+    policies: []
 }
 
 export const activeComboReducer = (state = initState, action) => {
@@ -22,6 +23,11 @@ export const activeComboReducer = (state = initState, action) => {
             return {
                 ...state,
                 items: [...action.combos]
+            }
+        case RECEIVE_POLICIES:
+            return {
+                ...state,
+                policies: [...action.policies]
             }
         case RECEIVE_DETAIL_COMBO:
             return {

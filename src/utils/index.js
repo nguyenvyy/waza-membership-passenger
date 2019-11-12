@@ -42,3 +42,8 @@ export function debounce(func, wait) {
         timeout = setTimeout(executeFunction, wait);
     };
 };
+
+export function deduplicate(arr) {
+    let set = new Set(arr);
+    return Array.from(set);
+}
