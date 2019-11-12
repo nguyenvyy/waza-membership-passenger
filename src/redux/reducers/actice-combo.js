@@ -3,7 +3,7 @@ import { REQUEST_ACTIVE_COMBOS, STOP_REQUEST_ACTIVE_COMBOS, RECEIVE_ACTIVE_COMBO
 const initState = {
     items: [],
     detail: null,
-    isFetching: false
+    isFetching: false,
 }
 
 export const activeComboReducer = (state = initState, action) => {
@@ -21,7 +21,7 @@ export const activeComboReducer = (state = initState, action) => {
         case RECEIVE_ACTIVE_COMBOS:
             return {
                 ...state,
-                items: [action.combos]
+                items: [...action.combos]
             }
         case RECEIVE_DETAIL_COMBO:
             return {

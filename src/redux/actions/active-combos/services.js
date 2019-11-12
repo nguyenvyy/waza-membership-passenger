@@ -2,27 +2,30 @@ import axios from 'axios'
 import { serverURL } from '../../../constant'
 
 
-export const getActiveCombosAPI = (params, token) => axios(
+export const getActiveCombosAPI = () => axios(
     {
         method: 'GET',
         responseType: "json",
         url: `${serverURL}/combos/active`,
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        params
+        params: {
+            page: 0,
+            limit: 200
+        }
     }
 )
 
-export const getDetailComboAPI = (id, token) => axios(
+export const getDetailComboAPI = (id) => axios(
     {
         method: 'GET',
         responseType: "json",
         url: `${serverURL}/combos/${id}`,
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
+    }
+)
+
+export const getPolicyAPI = (id) => axios(
+    {
+        method: 'GET',
+        responseType: "json",
+        url: `${serverURL}/policies/${id}`,
     }
 )

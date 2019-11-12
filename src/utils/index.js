@@ -9,6 +9,21 @@ export const checkHours = hour => {
     return "buổi tối"
 }
 
+export const getTitleByNumberOfVoucherType = number => {
+    switch (number) {
+        case 1:
+            return 'Gói Đơn'
+        case 2:
+            return 'Gói Đôi'
+        case 3:
+            return 'Gói 3'
+        case 4:
+            return 'Gói 4'
+        default:
+            return 'Gói Error'
+    }
+}
+
 export const formatVND = value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
 export const deleteformatVND = value => value.replace(/\$\s?|(,*)/g, '')
