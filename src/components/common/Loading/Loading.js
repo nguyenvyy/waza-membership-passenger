@@ -8,3 +8,7 @@ export const Loading = () => (
         <Spin size="large" />
     </div>
 )
+
+export const LoadingAdvance = ({loading = false, children}) => (
+    loading ? <Loading /> : children
+)
