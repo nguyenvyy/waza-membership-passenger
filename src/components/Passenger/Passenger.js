@@ -2,6 +2,7 @@ import React, { Suspense, useState, useEffect, useCallback, useRef } from 'react
 import { Switch } from 'react-router-dom'
 import { RouteWithSubRoutes } from '../../routes/RouteWithSubRoutes'
 import { NavBar } from '../NavBar/NavBar'
+import { Loading } from '../common/Loading/Loading';
 export const usePrevious = value => {
     const previous = useRef();
     useEffect(() => {
@@ -26,14 +27,14 @@ const Passenger = ({ routes = [] }) => {
         setNextScroll(event.target.documentElement.scrollTop)
     }, [])
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('touchmove', handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('touchmove', handleScroll);
         }
     }, [handleScroll])
     return (
         <div>
-            <Suspense fallback="...loading">
+            <Suspense fallback={<Loading />}>
                 <Switch>
                     {routes.map((route, index) => <RouteWithSubRoutes key={index} {...route} />)}
                 </Switch>
