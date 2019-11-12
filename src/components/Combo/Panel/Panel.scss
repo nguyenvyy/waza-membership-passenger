@@ -1,0 +1,13 @@
+.combo-panel {
+	height: 50px;
+	box-shadow: 0px 3px 4px 0px #e0e0e0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	&__toggle {
+		&--active {
+            color: #5e35b1;
+            font-weight: 600;
+            border-bottom: 2px solid #5e35b1;
+		}
+	}
+}

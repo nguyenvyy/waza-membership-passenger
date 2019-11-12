@@ -16,7 +16,7 @@ const Passenger = ({ routes = [] }) => {
     const [nextScroll, setNextScroll] = useState(0)
     const preScroll = usePrevious(nextScroll)
     useEffect(() => {
-        if (nextScroll > preScroll) {
+        if (nextScroll < preScroll) {
             setIsScrollDown(true)
         } else {
             setIsScrollDown(false)
@@ -24,7 +24,8 @@ const Passenger = ({ routes = [] }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nextScroll])
     const handleScroll = useCallback(event => {
-        setNextScroll(event.target.documentElement.scrollTop)
+        event.preventDefault();
+        setNextScroll(event.changedTouches[0].clientY)
     }, [])
     useEffect(() => {
         window.addEventListener('touchmove', handleScroll);
