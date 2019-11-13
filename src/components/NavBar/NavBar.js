@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import './NavBar.scss'
 import { Icon } from 'antd'
 
-export const NavBar = ({collapsed}) => {
+ const NavBar = ({collapsed}) => {
 
     return (
         <nav className={`bottom-nav ${collapsed ? 'bottom-nav--collapsed' : ''}`}>
@@ -35,3 +35,5 @@ export const NavBar = ({collapsed}) => {
         </nav>
     )
 }
+
+export default NavBar

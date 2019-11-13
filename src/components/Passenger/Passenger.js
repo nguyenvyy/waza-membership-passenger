@@ -1,7 +1,7 @@
 import React, { Suspense, useState, useEffect, useCallback, useRef } from 'react'
 import { Switch } from 'react-router-dom'
 import { RouteWithSubRoutes } from '../../routes/RouteWithSubRoutes'
-import { NavBar } from '../NavBar/NavBar'
+import  NavBar  from '../NavBar/NavBar'
 import { Loading } from '../common/Loading/Loading';
 export const usePrevious = value => {
     const previous = useRef();
