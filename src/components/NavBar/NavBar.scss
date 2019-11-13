@@ -16,9 +16,6 @@
         cursor: pointer;
 		flex-grow: 1;
 		flex-direction: column;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		&--active {
             color: #531280 !important;
             font-weight: 600 !important;

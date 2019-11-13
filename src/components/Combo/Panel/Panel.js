@@ -9,7 +9,7 @@ export const ComboPanel = ({ activeKey }) => {
     return (
         <div className="combo-panel">
             <div className="combo-panel__header">
-                <div className="title">
+                <div className="title d-flex-center">
                     Gói Hội Viên
                 </div>
                 {/* <div className="close" onClick={() => history.goBack()}>

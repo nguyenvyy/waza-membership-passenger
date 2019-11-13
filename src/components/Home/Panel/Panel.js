@@ -8,7 +8,7 @@ import { formatVND } from '../../../utils'
 export const Panel = ({ wallet }) => {
 
     return (
-        <div className="panel">
+        <div className="panel d-flex-center">
             <div className="card">
                 <p className="card__top">Số dư tài khoản: {formatVND(wallet.balance)} VNĐ </p>
                 <div className="card__bottom" >

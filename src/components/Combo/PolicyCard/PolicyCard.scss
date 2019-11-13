@@ -1,0 +1,48 @@
+.policy-card {
+	flex-direction: column;
+	&__top {
+		position: relative;
+		width: 90%;
+		height: 100px;
+		background-color: #fff;
+		// overflow: hidden;
+		margin-bottom: 4px;
+		background: linear-gradient(135deg, #c56cd6 0%, #3425af 100%);
+		& .line {
+			z-index: 99;
+			position: absolute;
+			left: 28px;
+			top: 5px;
+			list-style-type: none;
+			& li {
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				margin: 6.5px 0;
+				background-color: white;
+			}
+		}
+		& .before {
+			z-index: 99;
+			position: absolute;
+			top: -10px;
+			left: 20px;
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-radius: 16px;
+			background-color: #fff;
+		}
+		& .after {
+			z-index: 99;
+			position: absolute;
+			bottom: -10px;
+			left: 20px;
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-radius: 16px;
+			background-color: #fff;
+		}
+	}
+}

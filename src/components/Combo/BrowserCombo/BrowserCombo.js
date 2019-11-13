@@ -1,34 +1,37 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { LoadingAdvance } from '../../common/Loading/Loading'
 import { Empty } from '../../common/Empty/Empty'
+import { PolicyCard } from '../PolicyCard/PolicyCard'
+import { ComboCard } from '../../Home/ComboCard/ComboCard'
+import './BrowserCombo.scss'
 
-
-export const BrowserCombo = ({combos, fetchActiveCombos, isFetching}) => {
+export const BrowserCombo = ({combos, fetchActiveCombos, isFetching, comboGroups}) => {
     useEffect(() => {
         if(combos.length === 0) 
             fetchActiveCombos()
-    }, [])
-
-    const displayCombos = useMemo(() => {
-        if(combos.length > 0) {
-            let result = combos.reduce((acc, curr) => {
-                if(acc[curr.policy_id] === undefined) {
-                    acc[curr.policy_id] = [curr]
-                } else {
-                    acc[curr.policy_id].push(curr)
-                }
-                return acc
-            }, {})
-            return result
-        } else {
-            return []
-        }
-    } , [combos])
+    }, [combos.length, fetchActiveCombos])
 
     return (
         <LoadingAdvance loading={isFetching}>
-            <Empty isEmpty={displayCombos.length === 0} >
-                kakkakaka
+            <Empty isEmpty={Object.keys(comboGroups).length === 0} >
+                <div className="combo-group">
+
+                <PolicyCard />
+                <PolicyCard />
+
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+                <PolicyCard />
+
+
+                </div>
+
             </Empty>
         </LoadingAdvance>
     )

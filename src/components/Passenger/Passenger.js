@@ -24,7 +24,6 @@ const Passenger = ({ routes = [] }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nextScroll])
     const handleScroll = useCallback(event => {
-        event.preventDefault();
         setNextScroll(event.changedTouches[0].clientY)
     }, [])
     useEffect(() => {

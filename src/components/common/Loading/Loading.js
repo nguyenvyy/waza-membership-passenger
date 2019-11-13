@@ -4,7 +4,7 @@ import { Spin } from 'antd';
 import './Loading.scss'
 
 export const Loading = () => (
-    <div className="loading">
+    <div className="loading d-flex-center">
         <Spin size="large" />
     </div>
 )

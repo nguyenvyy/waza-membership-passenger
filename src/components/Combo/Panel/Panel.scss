@@ -14,14 +14,8 @@
 			width: 100%;
 			height: 100%;
 			font-weight: 700;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 		}
 		& .close {
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			position: absolute;
 			top: 10px;
 			font-size: 20px;
@@ -34,7 +28,7 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		& .toggle {
-			color: #9e9e9e;
+			color: #616161;
 			&--active {
 				color: #5e35b1;
 				font-weight: 600;
