@@ -1,30 +1,20 @@
-import React, { useState, lazy } from 'react';
-import { Drawer } from 'antd';
+import React, { Suspense } from 'react';
+import { Switch } from 'react-router-dom'
 import { ComboPanel } from './Panel/Panel';
+import { Loading } from '../common/Loading/Loading';
+import { RouteWithSubRoutes } from '../../routes/RouteWithSubRoutes';
 
-export const keys = {
-	browser: 1,
-	myCombo: 2
-}
-const BrowserCombo = lazy(() => import('../../redux/container/BrowserCombo'))
-export const Combo = ({ visible, handleClose }) => {
-	const [activeKey, setActiveKey] = useState(1);
-	const handleChangeKey = (key) => {
-		setActiveKey(key)
-	}
+const Combo = ({ routes }) => {
 	return (
-		<Drawer
-			height="100vh"
-			title="Gói Hội Viên"
-			placement="bottom"
-			bodyStyle={{ padding: '0' }}
-			headerStyle={{ display: 'flex', fontWeight: '800', justifyContent: 'center', alignItems: 'center', borderBottom: 'none' }}
-			closable={true}
-			onClose={handleClose}
-			visible={!visible}
+		<div
 		>
-			<ComboPanel handleChangeKey={handleChangeKey} activeKey={activeKey} />
-			<BrowserCombo />
-		</Drawer>
+			<ComboPanel />
+			<Suspense fallback={<Loading />}>
+				<Switch>
+					{routes.map((route, index) => <RouteWithSubRoutes key={index} {...route} />)}
+				</Switch>
+			</Suspense>
+		</div>
 	);
 };
+export default Combo

@@ -1,21 +1,36 @@
 import React from 'react'
-
+import { NavLink, useHistory } from 'react-router-dom'
 import './Panel.scss'
-import { keys } from '../Combo'
+import { pathCombo } from '../../../config/route-config'
+import { Icon } from 'antd'
 
-export const ComboPanel = ({ handleChangeKey, activeKey }) => {
-
+export const ComboPanel = ({ activeKey }) => {
+    const history = useHistory();
     return (
         <div className="combo-panel">
-            <div className={`combo-panel__toggle ${activeKey === keys.browser ? 'combo-panel__toggle--active' : ''} d-flex-center`}
-                onClick={() => handleChangeKey(keys.browser)}
-            >
-                Duyệt gói
+            <div className="combo-panel__header">
+                <div className="title">
+                    Gói Hội Viên
+                </div>
+                {/* <div className="close" onClick={() => history.goBack()}>
+                    <Icon type="close" />
+                </div> */}
             </div>
-            <div className={`combo-panel__toggle ${activeKey === keys.myCombo ? 'combo-panel__toggle--active' : ''} d-flex-center`}
-                onClick={() => handleChangeKey(keys.myCombo)}
-            >
-                Gói hội viên của tôi
+            <div className="combo-panel__footer">
+                <NavLink
+                    to={`${pathCombo}/browser`}
+                    activeClassName="toggle--active"
+                    className={`toggle d-flex-center`}
+                >
+                    Duyệt gói
+                </NavLink>
+                <NavLink
+                    to={`${pathCombo}/my`}
+                    activeClassName="toggle--active"
+                    className={`toggle d-flex-center`}
+                >
+                    Gói hội viên của tôi
+                </NavLink>
             </div>
         </div>
     )
