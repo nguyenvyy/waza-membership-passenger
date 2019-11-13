@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { LoadingAdvance } from '../../common/Loading/Loading'
 import { Empty } from '../../common/Empty/Empty'
 import { PolicyCard } from '../PolicyCard/PolicyCard'
-import { ComboCard } from '../../Home/ComboCard/ComboCard'
 import './BrowserCombo.scss'
 
 export const BrowserCombo = ({combos, fetchActiveCombos, isFetching, comboGroups}) => {
@@ -15,21 +14,9 @@ export const BrowserCombo = ({combos, fetchActiveCombos, isFetching, comboGroups
         <LoadingAdvance loading={isFetching}>
             <Empty isEmpty={Object.keys(comboGroups).length === 0} >
                 <div className="combo-group">
-
-                <PolicyCard />
-                <PolicyCard />
-
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-                <PolicyCard />
-
-
+                {
+                    Object.keys(comboGroups).map(policyId => <PolicyCard key={policyId} policy={comboGroups[policyId].policy} />)
+                }
                 </div>
 
             </Empty>
