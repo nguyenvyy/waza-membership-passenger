@@ -12,9 +12,9 @@ export const ComboPanel = ({ activeKey }) => {
                 <div className="title d-flex-center">
                     Gói Hội Viên
                 </div>
-                {/* <div className="close" onClick={() => history.goBack()}>
+                <div className="close" onClick={() => history.goBack()}>
                     <Icon type="close" />
-                </div> */}
+                </div>
             </div>
             <div className="combo-panel__footer">
                 <NavLink

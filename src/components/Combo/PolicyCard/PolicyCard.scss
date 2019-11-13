@@ -1,13 +1,20 @@
 .policy-card {
 	flex-direction: column;
+	padding-top: 10px;
 	&__top {
 		position: relative;
 		width: 90%;
 		height: 100px;
 		background-color: #fff;
-		// overflow: hidden;
+		transform: rotate(-2deg) skew(-5deg);
 		margin-bottom: 4px;
 		background: linear-gradient(135deg, #c56cd6 0%, #3425af 100%);
+		& .content {
+			color: white;
+			font-size: 1.5em;
+			font-weight: bolder;
+			transform: skew(5deg);
+		}
 		& .line {
 			z-index: 99;
 			position: absolute;
@@ -43,6 +50,16 @@
 			height: 20px;
 			border-radius: 16px;
 			background-color: #fff;
+		}
+	}
+	&__bottom {
+		height: 50px;
+		& .grid-wrapper {
+			display: grid;
+			grid-template-columns: 7fr 3fr;
+			& .content {
+				color: black;
+			}
 		}
 	}
 }

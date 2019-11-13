@@ -23,15 +23,13 @@ export const PolicyCard = (policy) => {
         history.push('/p/home/a')
     }
     return (
-        <div className="policy-card d-flex-center">
+        <div className="policy-card d-flex-center" onClick={goComboGroup}>
             <div className="policy-card__top d-flex-center" >
                 <span className="before"></span>
                 <span className="after"></span>
-
-                <div>
+                <span className="content">
                     ƯU Đãi {mockup.extra_percent}%
-    
-                </div>
+                </span>
                 <ul className="line">
                 <li></li>
                 <li></li>
@@ -45,13 +43,15 @@ export const PolicyCard = (policy) => {
                 <li></li>
             </ul>
             </div>
-            <div className="policy-card__bottom" >
-                <div className="title">
-                    <b>
-                        {mockup.policy_name}
-                    </b>
+            <div className="policy-card__bottom d-flex-center" >
+                <div className="grid-wrapper">
+                    <div className="content d-flex-center">
+                        <b>
+                            {mockup.policy_name}
+                        </b>
+                    </div>
+                    <Button >Xem Gói</Button>
                 </div>
-                <Button onClick={goComboGroup}>Xem Gói</Button>
             </div>
         </div>
     )
