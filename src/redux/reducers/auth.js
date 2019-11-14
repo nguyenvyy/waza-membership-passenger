@@ -1,33 +1,21 @@
-import { LOGIN, LOGOUT, STOP_REQUEST, SEND_REQUEST } from "../actions/auth/types"
-
+import { STOP_REQUEST, SEND_REQUEST, RECEIVE_USER, RECEIVE_WALLTET, RECEIVE_REWARD, CLEAR_AUTH } from "../actions/auth/types"
 const initState = {
-    user: {
-        name: 'Nguyên Vy',
-        user_name: "admin@gmail.com",
-        wallet: {
-            balance: 400000,
-            id: 'x'
-        }
+    user: null,
+    wallet: {
+        balance: 400000,
+        id: 'x'
     },
-    isLoggedIn: true,
+    reward: {
+        point: 1000,
+        id: 2
+    },
+    isLoggedIn: false,
     isLoading: false
 }
-
-// {
-// 	"combo_id": "5dca565c2317a10017972d6a",
-// 	"user_name": "admin@gmail.com"
-// }
-
+//nguyenvy@gmail.com
+//nguyenvy
 export const authReducer = (state = initState, action) => {
     switch (action.type) {
-        case LOGIN:
-            return {
-                user: {...action.user},
-                isLoading: false,
-                isLoggedIn: true
-            }
-        case LOGOUT:
-            return initState
         case STOP_REQUEST:
             return {
                 ...state,
@@ -37,6 +25,25 @@ export const authReducer = (state = initState, action) => {
             return {
                 ...state,
                 isLoading: true
+            }
+        case RECEIVE_USER:
+            return {
+                ...state,
+                user: {...action.user}
+            }
+        case RECEIVE_WALLTET:
+            return {
+                ...state,
+                wallet: {...action.wallet}
+            }
+        case RECEIVE_REWARD:
+            return {
+                ...state,
+                reward: action.reward
+            }
+        case CLEAR_AUTH:
+            return {
+                ...initState
             }
         default:
             return state

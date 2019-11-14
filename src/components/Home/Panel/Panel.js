@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 import './Panel.scss'
 import { formatVND } from '../../../utils'
 
-export const Panel = ({ wallet }) => {
+export const Panel = ({ balance }) => {
 
     return (
         <div className="panel d-flex-center">
             <div className="card">
-                <p className="card__top">Số dư tài khoản: {formatVND(wallet.balance)} VNĐ </p>
+                <p className="card__top">Số dư tài khoản: {formatVND(balance)} VNĐ </p>
                 <div className="card__bottom" >
                     <Link className="link"  to="/p/voucher" >
                         <Icon type="forward" /> Ưu đãi <Icon type="backward" />
