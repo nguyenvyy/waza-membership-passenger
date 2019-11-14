@@ -3,10 +3,14 @@ import { lazy } from 'react'
 
 import { PrivateRoute } from '../routes/PrivateRoute'
 
-const Passenger = lazy(() => import('../components/Passenger/Passenger'))
-const Login = lazy(() => import('../components/Login/Login'))
-const Home = lazy(() => import('../redux/container/Home'))
+export const comboPath = '/p/combo'
+export const comboGroupPath = '/p/combo/browser'
 
+const PassengerLayout = lazy(() => import('../components/Passenger/Passenger'))
+const LoginPage = lazy(() => import('../components/Login/Login'))
+const HomePage = lazy(() => import('../redux/container/Home'))
+const ComboPage = lazy(() => import('../components/Combo/Combo'))
+const BrowserComboPage = lazy(() => import('../redux/container/BrowserCombo'))
 export const routes = [
     {
         path: '/',
@@ -16,7 +20,7 @@ export const routes = [
     },
     {
         path: '/p',
-        component: Passenger,
+        component: PassengerLayout,
         customRoute: PrivateRoute,
         routes: [
             {
@@ -27,13 +31,30 @@ export const routes = [
             },
             {
                 path: '/p/home',
-                component: Home
+                component: HomePage
+            },
+            {
+                path: '/p/combo',
+                component: ComboPage,
+                routes: [
+                    {
+                        path: '/p/combo',
+                        customRoute: Redirect,
+                        to: '/p/combo/browser',
+                        exact: true,
+                    },
+                    {
+                        path: '/p/combo/browser',
+                        component: BrowserComboPage
+                    }
+                ]
             }
+
         ]
         ,
     },
     {
         path: '/login',
-        component: Login
+        component: LoginPage
     }
 ]

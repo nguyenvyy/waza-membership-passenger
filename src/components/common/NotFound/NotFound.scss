@@ -1,0 +1,31 @@
+.not-found {
+	height: 100vh;
+	background: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 200;
+	flex-direction: column;
+	&__item {
+		color: #5e35b1;
+		margin: 10px 0;
+		&.bug {
+			color: #5e35b1;
+			font-size: 20em;
+		}
+		&.content {
+			font-size: 1.4em;
+			font-weight: 700;
+		}
+		&.title {
+			font-size: 1.4em;
+			font-weight: 500;
+		}
+		&.goback {
+			font-size: 1.1em;
+			font-weight: 600;
+		}
+	}
+}

@@ -9,6 +9,7 @@ import './App.scss';
 import { configStore } from './redux/store';
 import { routes } from './config/route-config';
 import { RouteWithSubRoutes } from './routes/RouteWithSubRoutes';
+import { Loading } from './components/common/Loading/Loading';
 
 const store = configStore()
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <Router>
-          <Suspense fallback="...loading">
+          <Suspense fallback={<Loading />}>
             <Switch>
               {routes.map((route, index) => <RouteWithSubRoutes key={index} {...route} />)}
             </Switch>
