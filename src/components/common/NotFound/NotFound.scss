@@ -29,3 +29,18 @@
 		}
 	}
 }
+
+.not-found-data {
+	height: 100vh;
+	background: transparent;
+	flex-direction: column;
+	&__item {
+		color: #5e35b1;
+		margin: 10px 0;
+		&.content {
+			font-size: 1.4em;
+			font-weight: 700;
+		}
+	}
+}
+
