@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import './Panel.scss'
-import { pathCombo } from '../../../config/route-config'
+import { comboPath } from '../../../config/route-config'
 import { Icon } from 'antd'
 
 export const ComboPanel = ({ activeKey }) => {
@@ -12,20 +12,20 @@ export const ComboPanel = ({ activeKey }) => {
                 <div className="title d-flex-center">
                     Gói Hội Viên
                 </div>
-                <div className="close" onClick={() => history.goBack()}>
+                <div className="close" onClick={() => history.push('/p/home')}>
                     <Icon type="close" />
                 </div>
             </div>
             <div className="combo-panel__footer">
                 <NavLink
-                    to={`${pathCombo}/browser`}
+                    to={`${comboPath}/browser`}
                     activeClassName="toggle--active"
                     className={`toggle d-flex-center`}
                 >
                     Duyệt gói
                 </NavLink>
                 <NavLink
-                    to={`${pathCombo}/my`}
+                    to={`${comboPath}/my`}
                     activeClassName="toggle--active"
                     className={`toggle d-flex-center`}
                 >

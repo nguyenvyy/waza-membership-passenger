@@ -13,6 +13,21 @@ export const getActiveCombosAPI = () => axios(
         }
     }
 )
+// axios(
+//     {
+//         method: 'GET',
+//         responseType: "json",
+//         url: `${serverURL}/comboAPI/Promotions`,
+//         params: {
+//             user_name: 'admin@gmail.com',
+//             service: 'food'
+//         }
+//     }
+// ).then(res => {
+//     debugger
+// }).catch(err => {
+//     debugger
+// })
 
 export const getDetailComboAPI = (id) => axios(
     {

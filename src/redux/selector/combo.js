@@ -25,3 +25,17 @@ export const groupCombosByPolicy = createSelector(
         }
     }
 )
+export const calculateSaveMoneyOfComboSelector = createSelector(
+    [combo => combo],
+    combo => {
+        console.log('re')
+        const saveMoney = combo.voucher_array.reduce((acc, curr) => acc+ (curr.value * curr.count), 0)
+        return saveMoney - combo.value
+    }
+)
+
+export const calculateSaveMoneyOfCombo = combo => {
+    console.log('re')
+    const saveMoney = combo.voucher_array.reduce((acc, curr) => acc+ (curr.value * curr.count), 0)
+    return saveMoney - combo.value
+}

@@ -47,3 +47,9 @@ export function deduplicate(arr) {
     let set = new Set(arr);
     return Array.from(set);
 }
+
+export const upperCaseFirstCharacter = string => {
+    const slice = string.slice(1);
+    return string[0].toLocaleUpperCase() + slice
+    
+}

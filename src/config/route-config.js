@@ -3,7 +3,8 @@ import { lazy } from 'react'
 
 import { PrivateRoute } from '../routes/PrivateRoute'
 
-export const pathCombo = '/p/combo'
+export const comboPath = '/p/combo'
+export const comboGroupPath = '/p/combo/browser'
 
 const PassengerLayout = lazy(() => import('../components/Passenger/Passenger'))
 const LoginPage = lazy(() => import('../components/Login/Login'))

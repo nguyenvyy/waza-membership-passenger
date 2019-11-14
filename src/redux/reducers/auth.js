@@ -3,6 +3,7 @@ import { LOGIN, LOGOUT, STOP_REQUEST, SEND_REQUEST } from "../actions/auth/types
 const initState = {
     user: {
         name: 'Nguyên Vy',
+        user_name: "admin@gmail.com",
         wallet: {
             balance: 400000,
             id: 'x'
@@ -11,6 +12,11 @@ const initState = {
     isLoggedIn: true,
     isLoading: false
 }
+
+// {
+// 	"combo_id": "5dca565c2317a10017972d6a",
+// 	"user_name": "admin@gmail.com"
+// }
 
 export const authReducer = (state = initState, action) => {
     switch (action.type) {

@@ -2,10 +2,11 @@ import React from 'react'
 import './PolicyCard.scss'
 import { Button } from 'antd'
 import { useHistory } from 'react-router-dom'
+import { comboGroupPath } from '../../../config/route-config'
 export const PolicyCard = ({policy}) => {
     const history = useHistory()
     const goComboGroup = () => {
-        history.push('/p/home/a')
+        history.push(`${comboGroupPath}/${policy._id}`)
     }
     return (
         <div className="policy-card d-flex-center" onClick={goComboGroup}>

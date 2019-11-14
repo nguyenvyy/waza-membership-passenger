@@ -6,7 +6,10 @@
 	z-index: 100;
 	background: white;
 	height: 80px;
-	box-shadow: 0px 3px 4px 0px #757575;
+	.combo-panel ::after {
+		content: "";
+
+	}
 	&__header {
 		position: relative;
 		height: 50%;
@@ -29,6 +32,7 @@
 		grid-template-columns: 1fr 1fr;
 		& .toggle {
 			color: #616161;
+			border-bottom: 2px solid #616161;
 			&--active {
 				color: #5e35b1;
 				font-weight: 600;
