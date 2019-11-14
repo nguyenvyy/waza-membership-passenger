@@ -7,6 +7,7 @@ import './BrowserCombo.scss'
 import { comboGroupPath } from '../../../config/route-config'
 import { Drawer } from 'antd'
 import { ComboGroup } from '../ComboGroup/ComboGroup'
+import { NotFound } from '../../common/NotFound/NotFound'
 
 export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroups, history }) => {
     useEffect(() => {
@@ -23,8 +24,11 @@ export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroup
                         Object.keys(comboGroups).map(policyId => <PolicyCard key={policyId} policy={comboGroups[policyId].policy} />)
                     }
                 </div>
-                <Route path={`${comboGroupPath}/:id`} render={({match}) => {
+                <Route path={`${comboGroupPath}/:id`} render={({ match }) => {
                     const policyId = match.params.id;
+                    if (comboGroups[policyId] === undefined) {
+                        return <NotFound content="Gói Hội Viên không được tìm thấy" />
+                    }
                     const combos = comboGroups[policyId].combos
                     const policy = comboGroups[policyId].policy
                     return (
@@ -35,20 +39,22 @@ export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroup
                                 height="100vh"
                                 title={policy.policy_name}
                                 headerStyle={
-                                    {display: 'flex', 
-                                    justifyContent: 'center', 
-                                    alignItems: 'center',
-                                    backgroundColor: 'hsla(0, 0%, 0%, 0.49)',
-                                    borderBottom: 'none',
-                                    height: '7%', 
-                                    color: 'red'}
+                                    {
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        backgroundColor: 'hsla(0, 0%, 0%, 0.49)',
+                                        borderBottom: 'none',
+                                        height: '7%',
+                                        color: 'red'
+                                    }
                                 }
-                                bodyStyle={{backgroundColor: 'hsla(0, 0%, 0%, 0.49)', padding: '0',height: '93%'}}
+                                bodyStyle={{ backgroundColor: 'hsla(0, 0%, 0%, 0.49)', padding: '0', height: '93%' }}
                                 closable={true}
                                 onClose={() => history.goBack()}
                                 visible={true}
                             >
-                                <ComboGroup policy={policy} combos={combos}/>
+                                <ComboGroup policy={policy} combos={combos} />
                             </Drawer>
                         </div>
                     )
