@@ -4,13 +4,13 @@ import { Panel } from './Panel/Panel'
 import { Combos } from './Combos/Combos'
 
 const Home = ({
-    userInfo
+    user, wallet
 }) => {
 
     return (
         <div className="home">
-            <Header username={userInfo.name} />
-            <Panel wallet={userInfo.wallet} />
+            <Header username={user.name} />
+            <Panel balance={wallet.balance} />
             <Combos/>
             <Combos/>
             <Combos/>

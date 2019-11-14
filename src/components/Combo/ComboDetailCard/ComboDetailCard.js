@@ -1,4 +1,4 @@
-import React, {  useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import './ComboDetailCard.scss'
 import { formatVND, upperCaseFirstCharacter } from '../../../utils'
@@ -26,7 +26,7 @@ export const ComboDetailCard = ({ combo }) => {
                             đ{formatVND(combo.value)}
                         </span>
                         <span className="day">
-                        {` /${combo.days} ngày`}
+                            {` /${combo.days} ngày`}
 
                         </span>
                     </div>
@@ -40,16 +40,18 @@ export const ComboDetailCard = ({ combo }) => {
                 <div className="combo-detail-card__body">
                     <ul className="voucher-list d-flex-center">
                         {combo.voucher_array.map(voucher => (
-                        <li key={voucher._id}>
-                            <span className="content">
-                                {`${voucher.count} x Mã ưu đãi đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(voucher.category)}`}
-                            </span>
+                            <li key={voucher._id}>
+                                <span className="content">
+                                    {`${voucher.count} x Mã ưu đãi đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(voucher.category)}`}
+                                </span>
                             </li>
                         ))}
                     </ul>
                     <div className="combo-detail-panel d-flex-center">
-                            <Link className="combo-detail-panel__detail" to={`${comboPath}/detail/${combo._id}`}>Xem chi tiết hơn ></Link>
-                            <Button className="combo-detail-panel__buy d-flex-center">Mua gói Hội Viên này</Button>
+                        <Link className="combo-detail-panel__detail" to={`${comboPath}/detail/${combo._id}`}>
+                            Xem chi tiết hơn >
+                        </Link>
+                        <Button className="combo-detail-panel__buy d-flex-center">Mua gói Hội Viên này</Button>
                     </div>
                 </div>
 

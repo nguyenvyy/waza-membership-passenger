@@ -1,9 +1,9 @@
 import {connect} from 'react-redux'
 import Home from '../../components/Home/Home'
 const mapState = ({auth}) => {
-
+    const { user, wallet } = auth
     return {
-        userInfo: {...auth.user}
+        user, wallet
     }
 }
 

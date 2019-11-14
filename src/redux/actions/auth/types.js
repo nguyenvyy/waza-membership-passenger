@@ -1,4 +1,6 @@
-export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
 export const STOP_REQUEST = 'STOP_REQUEST'
 export const SEND_REQUEST = 'SEND_REQUEST'
+export const RECEIVE_USER = 'RECEIVE_USER'
+export const RECEIVE_WALLTET = 'RECEIVE_WALLTET'
+export const RECEIVE_REWARD = 'RECEIVE_REWARD'
+export const CLEAR_AUTH = 'CLEAR_AUTH'

@@ -3,6 +3,14 @@
 	& .header {
 		flex-direction: column;
 		height: 30%;
+		& h1,
+		h2 {
+			color: #5e35b1;
+			font-weight: 800;
+		}
+		& h1 {
+			font-size: 4em;
+		}
 	}
 	& .body {
 		padding: 20px;
