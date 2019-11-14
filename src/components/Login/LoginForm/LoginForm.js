@@ -1,39 +1,62 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Form, Input, Icon, Checkbox, Button } from 'antd'
-import { useSelector } from 'react-redux'
-
+import React, { useState, useEffect } from 'react'
+import { Form, Input, Icon, Checkbox, Button, message } from 'antd'
+import { requestLogin } from '../../../redux/actions/auth/actions'
 import './LoginForm.scss'
 
-export const LoginForm = () => {
-    const isLoading = useSelector(state => state.auth.isLoading)
-    const [username, setUsername] = useState('');
+export const LoginForm = ({ isLoading, dispatch }) => {
+
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isRemember, setIsRemember] = useState(false)
+    useEffect(() => {
+        const userStorage = localStorage.getItem('user-waza')
+        if (userStorage !== null) {
+            const user = JSON.parse(userStorage)
+            setEmail(user.email)
+            setPassword(user.password)
+        }
+    }, [])
+    const onChangeRemember = e => {
+        setIsRemember(!isRemember)
+    }
     const onChangeUsername = e => {
         const value = e.target.value.trimLeft()
-        setUsername(value);
+        setEmail(value);
     }
     const onChangePassword = e => {
         const value = e.target.value
         setPassword(value);
     }
 
-    const login = e => {
-
+    const login = _ => {
+        dispatch(requestLogin(email, password)).then(res => {
+            if (res === 200) {
+                message.success('Đăng nhập thành công', 1)
+                if (isRemember) {
+                    const user = {
+                        email,
+                        password
+                    }
+                    localStorage.setItem('user-waza', JSON.stringify(user))
+                }
+            } else {
+                message.success('Email hoặc mật khẩu không hợp lệ', 1)
+            }
+        })
     }
 
     return (
         <Form className="login-form">
             <Form.Item
-                validateStatus={username.trim() === '' ? 'error' : 'success'}
-                help={username.trim() === '' ? 'Tên đăng nhập không được để trống' : ''}>
+                validateStatus={email.trim() === '' ? 'error' : 'success'}
+                help={email.trim() === '' ? 'Email không được để trống' : ''}>
                 <Input
-                    value={username}
+                    value={email}
                     onChange={onChangeUsername}
                     size="large"
                     className="login-form-input"
                     prefix={<Icon type="user" style={{ fontSize: '16px', color: 'rgba(0,0,0,.25)' }} />}
-                    placeholder="Tên tài khoản"
+                    placeholder="Email"
                 />
             </Form.Item>
             <Form.Item
@@ -51,14 +74,13 @@ export const LoginForm = () => {
             </Form.Item>
             <Form.Item >
                 <div className="d-flex justify-content-between">
-                    <Checkbox className="login-form-text">Ghi nhớ đăng nhập</Checkbox>
-                    <Link to="/forgot" className="login-form-text">Quên mật khẩu</Link>
+                    <Checkbox className="login-form-text" onChange={onChangeRemember}>Ghi nhớ đăng nhập</Checkbox>
                 </div>
             </Form.Item>
             <Form.Item>
                 <Button loading={isLoading}
                     type="primary"
-                    disabled={username.trim() === '' || password === ''}
+                    disabled={email.trim() === '' || password === ''}
                     onClick={login} className="login-form-button">Đăng nhập</Button>
             </Form.Item>
         </Form>

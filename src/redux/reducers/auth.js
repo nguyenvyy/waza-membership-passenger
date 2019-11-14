@@ -29,7 +29,8 @@ export const authReducer = (state = initState, action) => {
         case RECEIVE_USER:
             return {
                 ...state,
-                user: {...action.user}
+                user: {...action.user},
+                isLoggedIn: true
             }
         case RECEIVE_WALLTET:
             return {
