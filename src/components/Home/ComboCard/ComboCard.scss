@@ -5,6 +5,10 @@
 		display: flex;
 		justify-content: space-between;
 		flex-direction: column;
+		& .save-money {
+			color:  #5e35b1;
+			font-weight: 700;
+		}
 		& .content {
 			padding: 5px;
 			overflow: hidden;

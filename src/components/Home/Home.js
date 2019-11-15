@@ -1,8 +1,7 @@
 import React from 'react'
 import { Header } from './Header/Header'
 import { Panel } from './Panel/Panel'
-import { Combos } from './Combos/Combos'
-
+import NewCombos from '../../redux/container/NewCombos'
 const Home = ({
     user, wallet
 }) => {
@@ -11,11 +10,7 @@ const Home = ({
         <div className="home">
             <Header username={user.fullName} />
             <Panel balance={wallet.balance} />
-            <Combos/>
-            <Combos/>
-            <Combos/>
-            <Combos/>
-            <Combos/>
+            <NewCombos />
         </div>
     )
 }
