@@ -9,8 +9,8 @@ export const Header = ({ username }) => {
         return checkHours(now)
     }, [])
     return (
-        <div className="header">
-            <p className="header__title">
+        <div className="home-header">
+            <p className="home-header__title">
                 Chúc <b> {username} </b> {currentHousr} tốt lành!
             </p>
         </div>
