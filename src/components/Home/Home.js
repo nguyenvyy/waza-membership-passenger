@@ -9,7 +9,7 @@ const Home = ({
 
     return (
         <div className="home">
-            <Header username={user.name} />
+            <Header username={user.fullName} />
             <Panel balance={wallet.balance} />
             <Combos/>
             <Combos/>

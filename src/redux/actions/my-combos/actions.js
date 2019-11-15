@@ -13,8 +13,7 @@ export const requestBuyCombo = (email, comboId) => async dispatch => {
     try {
         dispatch(sendRequest())
         const res = await buyComboAPI(email, comboId)
-        receiveBoughtCombo(res.data)
-        console.log(res.data)
+        dispatch(receiveBoughtCombo(res.data))
         dispatch(stopRequest())
         return 200
     } catch (error) {
