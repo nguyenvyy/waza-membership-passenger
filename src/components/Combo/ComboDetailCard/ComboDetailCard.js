@@ -1,18 +1,25 @@
 import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import './ComboDetailCard.scss'
+import { useHistory } from 'react-router-dom'
 import { formatVND, upperCaseFirstCharacter } from '../../../utils'
 import { calculateSaveMoneyOfCombo } from '../../../redux/selector/combo'
 import { comboPath } from '../../../config/route-config'
 import { Button } from 'antd'
 export const ComboDetailCard = ({ combo }) => {
+    const history = useHistory()
     const saveMoney = useMemo(() => {
         return calculateSaveMoneyOfCombo(combo)
     }, [combo])
 
-    // const goBuyCombo = () => {
-
-    // }
+    const goBuyCombo = () => {
+        history.push({
+            pathname: `/p/buy/${combo._id}`,
+            state: {
+                combo
+            }
+        })
+    }
 
     return (
         <div className="card-wrapper">
@@ -51,7 +58,7 @@ export const ComboDetailCard = ({ combo }) => {
                         <Link className="combo-detail-panel__detail" to={`${comboPath}/detail/${combo._id}`}>
                             Xem chi tiết hơn >
                         </Link>
-                        <Button className="combo-detail-panel__buy d-flex-center">Mua gói Hội Viên này</Button>
+                        <Button className="combo-detail-panel__buy d-flex-center" onClick={goBuyCombo}>Mua gói Hội Viên này</Button>
                     </div>
                 </div>
 

@@ -11,11 +11,11 @@ export const fetchActiveCombos = _ => async (dispatch) => {
     dispatch(requestActiveCombos())
     try {
         const res = await getActiveCombosAPI();
-        dispatch(stopRequestActiveCombos())
         dispatch(receiveActiveCombos(res.data))
         let policyIds = deduplicate(res.data.map(item => item.policy_id))
         let policies = await Promise.all(policyIds.map(item => getPolicyAPI(item).then(item => item.data)))
         dispatch(receivePolicies(policies))
+        dispatch(stopRequestActiveCombos())
         return res
     } catch (error) {
         dispatch(stopRequestActiveCombos())
@@ -27,8 +27,8 @@ export const fetchDetailCombos = id => async (dispatch) => {
     dispatch(requestActiveCombos())
     try {
         const res = await getDetailComboAPI(id);
-        dispatch(stopRequestActiveCombos())
         dispatch(receiveDetailCombo(res.data))
+        dispatch(stopRequestActiveCombos())
         return res
     } catch (error) {
         dispatch(stopRequestActiveCombos())

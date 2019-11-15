@@ -7,7 +7,7 @@ import './BrowserCombo.scss'
 import { comboGroupPath } from '../../../config/route-config'
 import { Drawer } from 'antd'
 import { ComboGroup } from '../ComboGroup/ComboGroup'
-import { NotFound } from '../../common/NotFound/NotFound'
+import { NotFound, NotFoundData } from '../../common/NotFound/NotFound'
 
 export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroups, history }) => {
     useEffect(() => {
@@ -18,7 +18,7 @@ export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroup
 
     return (
         <LoadingAdvance loading={isFetching}>
-            <Empty isEmpty={Object.keys(comboGroups).length === 0} >
+            <Empty isEmpty={Object.keys(comboGroups).length === 0} alternative={<NotFoundData content="Hiện tại đang không có gói vào được bán!" />} >
                 <div className="combo-group">
                     {
                         Object.keys(comboGroups).map(policyId => <PolicyCard key={policyId} policy={comboGroups[policyId].policy} />)

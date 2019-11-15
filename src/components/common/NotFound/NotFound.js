@@ -24,3 +24,11 @@ export const NotFound = ({ content }) => (
         </Link>
     </div>
 )
+
+export const NotFoundData = ({ content }) => (
+    <div className="not-found-data d-flex-center">
+        <div className="not-found__item content">
+            {content}
+        </div>
+    </div>
+)

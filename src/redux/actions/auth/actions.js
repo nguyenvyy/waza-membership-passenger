@@ -1,5 +1,5 @@
 import { STOP_REQUEST, SEND_REQUEST, RECEIVE_USER, RECEIVE_WALLTET, RECEIVE_REWARD, CLEAR_AUTH } from "./types";
-import { loginAPI } from "./service";
+import { loginAPI, getUserInfoAPI } from "./service";
 import jwt from 'jwt-decode'
 export const stopRequest = () => ({type: STOP_REQUEST})
 export const sendRequest = () => ({type: SEND_REQUEST})
@@ -12,10 +12,11 @@ export const requestLogin = (email, password) => async (dispatch) => {
     try {
         dispatch(sendRequest())
         const token = await loginAPI(email, password)
+        const id = jwt(token)._id
+        const userRes = await getUserInfoAPI(id, token)
         const user = {
-            name: email,
-            email,
-            id: jwt(token)._id
+            ...userRes.data,
+            token
         }
         dispatch(receiveUser(user))
         dispatch(stopRequest())

@@ -5,12 +5,13 @@ import { PrivateRoute } from '../routes/PrivateRoute'
 
 export const comboPath = '/p/combo'
 export const comboGroupPath = '/p/combo/browser'
-
+export const comboBuy = '/p/buy'
 const PassengerLayout = lazy(() => import('../components/Passenger/Passenger'))
 const LoginPage = lazy(() => import('../components/Login/Login'))
 const HomePage = lazy(() => import('../redux/container/Home'))
 const ComboPage = lazy(() => import('../components/Combo/Combo'))
 const BrowserComboPage = lazy(() => import('../redux/container/BrowserCombo'))
+const PaymentPage = lazy(() => import('../redux/container/Payment'))
 export const routes = [
     {
         path: '/',
@@ -46,9 +47,13 @@ export const routes = [
                     {
                         path: '/p/combo/browser',
                         component: BrowserComboPage
-                    }
+                    },
                 ]
-            }
+            },
+            {
+                path: '/p/buy/:id',
+                component: PaymentPage
+            },
 
         ]
         ,
