@@ -41,7 +41,7 @@ export const ComboCard = ({ combo }) => {
 
                     </div>
                     <div className="combo-card__footer d-flex-center">
-                        <Link className="link" to="/p/combo/buy/id">Mua Ngay</Link>
+                        <Link className="link" to="/p/buy/id">Mua Ngay</Link>
                     </div>
                 </div>
             </Card>

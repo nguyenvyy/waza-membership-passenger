@@ -40,7 +40,7 @@ export const LoginForm = ({ isLoading, dispatch }) => {
                     localStorage.setItem('user-waza', JSON.stringify(user))
                 }
             } else {
-                message.success('Email hoặc mật khẩu không hợp lệ', 1)
+                message.error('Email hoặc mật khẩu không hợp lệ', 1)
             }
         })
     }
