@@ -7,6 +7,7 @@ import { LoadingAdvance, Loading } from '../../common/Loading/Loading';
 export const Combos = ({ isFetched, isFetching, fetchActiveCombos, newCombos }) => {
 	useEffect(() => {
 		if (isFetched === false) fetchActiveCombos();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	const settings = {
 		infinite: false,
