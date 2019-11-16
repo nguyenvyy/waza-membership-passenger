@@ -49,7 +49,7 @@ export const ComboDetailCard = ({ combo }) => {
                         {combo.voucher_array.map(voucher => (
                             <li key={voucher._id}>
                                 <span className="content">
-                                    {`${voucher.count} x Mã ưu đãi đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(voucher.category)}`}
+                                    {`${voucher.count} x Mã ưu đãi ${voucher.discount > 0 ? voucher.discount + '% tối đa' : ''} đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(voucher.category)}`}
                                 </span>
                             </li>
                         ))}
