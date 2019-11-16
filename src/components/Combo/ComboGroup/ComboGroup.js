@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComboDetailCard } from '../ComboDetailCard/ComboDetailCard'
+import { ComboDetailCard } from './ComboDetailCard/ComboDetailCard'
 import Slider from 'react-slick'
 
 export const ComboGroup = ({ combos, policy }) => {

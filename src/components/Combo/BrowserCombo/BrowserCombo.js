@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { LoadingAdvance } from '../../common/Loading/Loading'
 import { Empty } from '../../common/Empty/Empty'
-import { PolicyCard } from '../PolicyCard/PolicyCard'
 import './BrowserCombo.scss'
 import { comboGroupPath } from '../../../config/route-config'
 import { Drawer } from 'antd'
-import { ComboGroup } from '../ComboGroup/ComboGroup'
 import { NotFound, NotFoundData } from '../../common/NotFound/NotFound'
+import { PolicyCard } from './PolicyCard/PolicyCard'
+import { ComboGroup } from '../ComboGroup/ComboGroup'
 
 export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroups, history }) => {
     useEffect(() => {
