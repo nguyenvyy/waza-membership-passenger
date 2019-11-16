@@ -8,7 +8,8 @@ import {
 
 const initState = {
 	items: [],
-	isFetching: false
+	isFetching: false,
+	fetched: false
 };
 
 export const myComboReducer = (state = initState, action) => {
@@ -26,7 +27,8 @@ export const myComboReducer = (state = initState, action) => {
 		case RECEIVE_BOUGHT_COMBO:
 			return {
 				...state,
-				items: [ action.boughtCombo, ...state.items ]
+				items: [ action.boughtCombo, ...state.items ],
+				fetched: true
 			};
 		case RECEIVE_MY_COMBOS:
 			return {

@@ -2,9 +2,9 @@ import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import './ComboDetailCard.scss'
 import { useHistory } from 'react-router-dom'
-import { formatVND, upperCaseFirstCharacter } from '../../../utils'
-import { calculateSaveMoneyOfCombo } from '../../../redux/selector/combo'
-import { comboPath } from '../../../config/route-config'
+import { formatVND, upperCaseFirstCharacter } from '../../../../utils'
+import { calculateSaveMoneyOfCombo } from '../../../../redux/selector/combo'
+import { comboPath } from '../../../../config/route-config'
 import { Button } from 'antd'
 export const ComboDetailCard = ({ combo }) => {
     const history = useHistory()
