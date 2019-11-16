@@ -16,7 +16,7 @@ const initState = {
 		point: 1000,
 		id: 2
 	},
-	isLoggedIn: true,
+	isLoggedIn: false,
 	isLoading: false
 };
 
