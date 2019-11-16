@@ -55,26 +55,27 @@
 					font-size: 1.2em;
 					& .content {
 						color: #424242;
+						word-break: break-word;
 					}
 				}
 			}
 			& .combo-detail-panel {
 				position: absolute;
 				bottom: 0;
-                flex-direction: column;
-                width: 100%;
-                padding-bottom: 10px;
-                &__detail {
+				flex-direction: column;
+				width: 100%;
+				padding-bottom: 10px;
+				&__detail {
 					color: #5e35b1;
 					font-size: 1.2em;
-                }
+				}
 				&__buy {
 					background: #5e35b1;
 					font-size: 1.3em;
-                    color: white;
-                    width: 80%;
-                    height: 40px;
-                    margin-top: 10px;
+					color: white;
+					width: 80%;
+					height: 40px;
+					margin-top: 10px;
 				}
 			}
 		}

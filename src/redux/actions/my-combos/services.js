@@ -1,10 +1,6 @@
 import Axios from "axios";
 import { serverURL } from "../../../constant";
 
-// export const getMyCombos = () => Axios({
-//     method: 'POST',
-//     url: `${serverURL}/comboAPI/Promotions`
-// })
 
 export const buyComboAPI = (email, comboId) => Axios({
     method: 'POST',
@@ -16,5 +12,14 @@ export const buyComboAPI = (email, comboId) => Axios({
     data: {
         user_name: email,
         combo_id: comboId
+    }
+})
+
+export const getMyComboAPI = email => Axios({
+    method: 'GET',
+    url: `${serverURL}/passenger/mycombo`,
+    responseType: 'json',
+    params: {
+        user_name: email
     }
 })

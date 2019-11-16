@@ -2,7 +2,7 @@ import React from 'react'
 import './PolicyCard.scss'
 import { Button } from 'antd'
 import { useHistory } from 'react-router-dom'
-import { comboGroupPath } from '../../../config/route-config'
+import { comboGroupPath } from '../../../../config/route-config'
 export const PolicyCard = ({policy}) => {
     const history = useHistory()
     const goComboGroup = () => {

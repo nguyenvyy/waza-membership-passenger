@@ -3,12 +3,14 @@ import {
 	STOP_REQUEST,
 	RECEIVE_BOUGHT_COMBO,
 	RECEIVE_MY_COMBOS,
-	STOP_COMBO
+	STOP_COMBO,
+	FETCH_MY_COMBO
 } from '../actions/my-combos/types';
 
 const initState = {
 	items: [],
-	isFetching: false
+	isFetching: false,
+	fetched: false
 };
 
 export const myComboReducer = (state = initState, action) => {
@@ -26,12 +28,17 @@ export const myComboReducer = (state = initState, action) => {
 		case RECEIVE_BOUGHT_COMBO:
 			return {
 				...state,
-				items: [ action.boughtCombo, ...state.items ]
+				items: [ action.boughtCombo, ...state.items ],
 			};
+		case FETCH_MY_COMBO:
+			return {
+				...state,
+				fetched: true
+			}
 		case RECEIVE_MY_COMBOS:
 			return {
 				...state,
-				items: [ ...action.myCombos ]
+				items: [ ...action.myCombos ],
 			};
 		case STOP_COMBO:
 			let newItems = state.items.slice();
