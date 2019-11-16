@@ -1,5 +1,5 @@
 export const serverURL = 'https://dnguyen-combo-manager.herokuapp.com'
-export const coreURL = 'http://waza.space:5050'
+export const coreURL = 'https://waza-passenger.herokuapp.com'
 export const rewardURL = 'https://safe-caverns-44957.herokuapp.com/API'
 export const paymentURL = 'https://waza-payment-258904.appspot.com'
 export const formatOfDateFromDB = 'YYYY/MM/DD'
