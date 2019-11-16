@@ -13,6 +13,7 @@ const ComboPage = lazy(() => import('../components/Combo/Combo'))
 const BrowserComboPage = lazy(() => import('../redux/container/BrowserCombo'))
 const PaymentPage = lazy(() => import('../redux/container/Payment'))
 const AccountPage = lazy(() => import('../components/Account/Account'))
+const MyComboPage = lazy(() => import('../redux/container/MyCombo'))
 export const routes = [
     {
         path: '/',
@@ -49,6 +50,10 @@ export const routes = [
                         path: '/p/combo/browser',
                         component: BrowserComboPage
                     },
+                    {
+                        path: '/p/combo/my',
+                        component: MyComboPage
+                    }
                 ]
             },
             {
