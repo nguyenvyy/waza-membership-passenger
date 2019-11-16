@@ -20,6 +20,7 @@
 			width: 100%;
 			height: 100%;
 			font-weight: 700;
+			font-size: 1.5em;
 		}
 		& .close {
 			position: absolute;
@@ -30,7 +31,7 @@
 	}
 	&__footer {
 		height: 50%;
-
+		font-size: 1.1em;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		& .toggle {
