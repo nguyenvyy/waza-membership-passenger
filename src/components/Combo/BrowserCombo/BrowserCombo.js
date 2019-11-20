@@ -21,7 +21,7 @@ export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroup
             <Empty isEmpty={Object.keys(comboGroups).length === 0} alternative={<NotFoundData content="Hiện tại đang không có gói vào được bán!" />} >
                 <div className="combo-group">
                     {
-                        Object.keys(comboGroups).map(policyId => <PolicyCard key={policyId} policy={comboGroups[policyId].policy} />)
+                        Object.keys(comboGroups).map(policyId => <PolicyCard combos={comboGroups[policyId].combos} key={policyId} policy={comboGroups[policyId].policy} />)
                     }
                 </div>
                 <Route path={`${comboGroupPath}/:id`} render={({ match }) => {
@@ -29,7 +29,7 @@ export const BrowserCombo = ({ combos, fetchActiveCombos, isFetching, comboGroup
                     if (comboGroups[policyId] === undefined) {
                         return <NotFound content="Gói Hội Viên không được tìm thấy" />
                     }
-                    const combos = comboGroups[policyId].combos
+                    const combos = comboGroups[policyId].combos.sort((a,b) => a.value - b.value)
                     const policy = comboGroups[policyId].policy
                     return (
                         <div className="group">
