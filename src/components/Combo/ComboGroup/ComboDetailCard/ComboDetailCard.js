@@ -4,7 +4,7 @@ import './ComboDetailCard.scss'
 import { useHistory } from 'react-router-dom'
 import { formatVND, upperCaseFirstCharacter } from '../../../../utils'
 import { calculateSaveMoneyOfCombo } from '../../../../redux/selector/combo'
-import { comboPath, comboDetailPath } from '../../../../config/route-config'
+import {  comboDetailPath } from '../../../../config/route-config'
 import { Button } from 'antd'
 export const ComboDetailCard = ({ combo }) => {
     const history = useHistory()
