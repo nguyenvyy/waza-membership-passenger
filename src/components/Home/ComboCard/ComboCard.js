@@ -4,6 +4,7 @@ import './ComboCard.scss';
 import { formatVND } from '../../../utils';
 import { Card } from 'antd';
 import { calculateSaveMoneyOfCombo } from '../../../redux/selector/combo';
+import { comboDetailPath } from '../../../config/route-config';
 
 export const ComboCard = ({ combo }) => {
 	const contentRef = useRef(null);
@@ -36,7 +37,7 @@ export const ComboCard = ({ combo }) => {
 					</div>
 					<div className="combo-card__footer d-flex-center">
 						<Link className="link" to={{
-                            pathname: `/p/buy/${combo._id}`,
+                            pathname: `${comboDetailPath}/${combo._id}`,
                             state: {
                                 combo
                             }

@@ -4,7 +4,7 @@ import './ComboDetailCard.scss'
 import { useHistory } from 'react-router-dom'
 import { formatVND, upperCaseFirstCharacter } from '../../../../utils'
 import { calculateSaveMoneyOfCombo } from '../../../../redux/selector/combo'
-import { comboPath } from '../../../../config/route-config'
+import {  comboDetailPath } from '../../../../config/route-config'
 import { Button } from 'antd'
 export const ComboDetailCard = ({ combo }) => {
     const history = useHistory()
@@ -55,7 +55,14 @@ export const ComboDetailCard = ({ combo }) => {
                         ))}
                     </ul>
                     <div className="combo-detail-panel d-flex-center">
-                        <Link className="combo-detail-panel__detail" to={`${comboPath}/detail/${combo._id}`}>
+                        <Link className="combo-detail-panel__detail" to={
+                            {
+                                pathname: `${comboDetailPath}/${combo._id}`,
+                                state: {
+                                    combo
+                                }
+                            }
+                        }>
                             Xem chi tiết hơn >
                         </Link>
                         <Button className="combo-detail-panel__buy d-flex-center" onClick={goBuyCombo}>Mua gói Hội Viên này</Button>
