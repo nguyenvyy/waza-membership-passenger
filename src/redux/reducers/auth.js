@@ -8,13 +8,26 @@ import {
 	INCREASE_BALANCE,
 	DECREASE_BALANCE
 } from '../actions/auth/types';
+// const initState = {
+// 	user: {
+// 		email: 'nguyenvy@gmail.com',
+// 		fullName: 'nguyen vy',
+// 		phone: '12312312',
+// 		image: '',
+// 	},
+// 	wallet: {
+// 		balance: 0,
+// 		id: 'x'
+// 	},
+// 	reward: {
+// 		point: 1000,
+// 		id: 2
+// 	},
+// 	isLoggedIn: true,
+// 	isLoading: false
+// };
 const initState = {
-	user: {
-		email: 'nguyenvy@gmail.com',
-		fullName: 'nguyen vy',
-		phone: '12312312',
-		image: '',
-	},
+	user: null,
 	wallet: {
 		balance: 0,
 		id: 'x'
@@ -23,10 +36,9 @@ const initState = {
 		point: 1000,
 		id: 2
 	},
-	isLoggedIn: true,
+	isLoggedIn: false,
 	isLoading: false
 };
-
 export const authReducer = (state = initState, action) => {
 	switch (action.type) {
 		case STOP_REQUEST:
