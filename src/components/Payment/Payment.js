@@ -4,7 +4,7 @@ import './Payment.scss';
 import { formatVND } from '../../utils';
 import { Button, Icon, Alert, message } from 'antd';
 
-export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
+export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreaseBalance }) => {
 	const disabled = useMemo(
 		() => {
 			if (combo !== undefined) {
@@ -22,6 +22,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
 	const handleBuyCombo = () => {
 		setIsBuying(true);
 		requestBuyCombo(user.email, combo._id).then((status) => {
+			decreaseBalance(combo.value)
 			setIsBuying(false);
 			switch (status) {
 				case 200:

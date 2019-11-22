@@ -4,19 +4,26 @@ import {
 	RECEIVE_USER,
 	RECEIVE_WALLTET,
 	RECEIVE_REWARD,
-	CLEAR_AUTH
+	CLEAR_AUTH,
+	INCREASE_BALANCE,
+	DECREASE_BALANCE
 } from '../actions/auth/types';
 const initState = {
-	user: null,
+	user: {
+		email: 'nguyenvy@gmail.com',
+		fullName: 'nguyen vy',
+		phone: '12312312',
+		image: '',
+	},
 	wallet: {
-		balance: 4000000,
+		balance: 0,
 		id: 'x'
 	},
 	reward: {
 		point: 1000,
 		id: 2
 	},
-	isLoggedIn: false,
+	isLoggedIn: true,
 	isLoading: false
 };
 
@@ -52,6 +59,23 @@ export const authReducer = (state = initState, action) => {
 			return {
 				...initState
 			};
+		// mockup
+		case INCREASE_BALANCE:
+			return {
+				...state,
+				wallet: {
+					...state.wallet,
+					balance: state.wallet.balance + action.money
+				}
+			}
+		case DECREASE_BALANCE:
+			return {
+				...state,
+				wallet: {
+					...state.wallet,
+					balance: state.wallet.balance - action.money
+				}
+			}
 		default:
 			return state;
 	}
