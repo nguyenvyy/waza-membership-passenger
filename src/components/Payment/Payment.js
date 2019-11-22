@@ -4,7 +4,7 @@ import './Payment.scss';
 import { formatVND } from '../../utils';
 import { Button, Icon, Alert, message } from 'antd';
 
-export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
+export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreaseBalance }) => {
 	const disabled = useMemo(
 		() => {
 			if (combo !== undefined) {
@@ -22,6 +22,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
 	const handleBuyCombo = () => {
 		setIsBuying(true);
 		requestBuyCombo(user.email, combo._id).then((status) => {
+			decreaseBalance(combo.value)
 			setIsBuying(false);
 			switch (status) {
 				case 200:
@@ -51,12 +52,12 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
 					<div className="order__content">
 						<div className="combo-content">
 							<span className="combo-content__name">{combo.combo_name}</span>
-							<span className="combo-content__price">đ{formatVND(combo.value)}</span>
+							<span className="combo-content__price">₫{formatVND(combo.value)}</span>
 						</div>
 						<hr />
 						<div className="total">
 							<span className="total__label">Tổng số</span>
-							<span className="total__value">đ{formatVND(combo.value)}</span>
+							<span className="total__value">₫{formatVND(combo.value)}</span>
 						</div>
 					</div>
 				</div>
@@ -73,7 +74,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
 						{disabled && <Alert message="Bạn không đủ số dư để để mua. Hãy nạp thêm!" type="warning" />}
 					</div>
 					<p>
-						Bạn sẻ được yêu cầu thanh toán <span>đ{formatVND(combo.value)}</span> / {combo.days} ngày. Tự
+						Bạn sẻ được yêu cầu thanh toán <span>₫{formatVND(combo.value)}</span> / {combo.days} ngày. Tự
 						động gia hạn. Hủy bất kỳ lúc nào
 					</p>
 				</div>
@@ -89,7 +90,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo }) => {
 					className={`verify ${!disabled ? 'verify--active' : ''}`}
 					disabled={disabled}
 				>
-					Xác nhận • đ{formatVND(combo.value)}
+					Xác nhận • ₫{formatVND(combo.value)}
 				</Button>
 			</div>
 		</div>

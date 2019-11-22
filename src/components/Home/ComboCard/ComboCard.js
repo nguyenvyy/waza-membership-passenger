@@ -27,7 +27,7 @@ export const ComboCard = ({ combo }) => {
 			<Card size="small" title={combo.combo_name} bodyStyle={{ height: '240px' }}>
 				<div className="combo-card__body">
 					<div>
-						<p className="save-money">Tiết kiệm đ{formatVND(saveMoney)}</p>
+						<p className="save-money">Tiết kiệm ₫{formatVND(saveMoney)}</p>
 						<div className="content">
 							<p ref={contentRef}>
                                 {combo.description}

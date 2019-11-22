@@ -46,11 +46,11 @@ const ComboDetail = ({ history, location }) => {
                             {`Gói tiết kiệm ${combo.days} ngày`}
                         </span>
                         <span className="short-description__price">
-                            đ{formatVND(combo.value)}
+                            ₫{formatVND(combo.value)}
                         </span>
                         <span className="short-description__save">
                             <Icon type="forward" />
-                            {`Tiết kiệm đ${formatVND(saveMoney)}`}
+                            {`Tiết kiệm ₫${formatVND(saveMoney)}`}
                             <Icon type="backward" />
                         </span>
                     </div>
@@ -62,7 +62,7 @@ const ComboDetail = ({ history, location }) => {
                                 <span> <b>{voucher.count}</b> Ưu đãi </span>
                                 <span>
                                     <Icon type="forward" />
-                                    {`${voucher.discount > 0 ? voucher.discount + '% tối đa' : ''} đ${formatVND(voucher.value)}`}
+                                    {`${voucher.discount > 0 ? voucher.discount + '% tối đa' : ''} ₫${formatVND(voucher.value)}`}
                                     <Icon type="backward" />
                                 </span>
                             </div>

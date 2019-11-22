@@ -36,7 +36,7 @@ export const MyComboCard = ({ combo }) => {
 							<span className="content">
 								{`${voucher.count} x Mã ưu đãi ${voucher.discount > 0
 									? voucher.discount + '% tối đa'
-									: ''} đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(
+									: ''} ₫${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(
 									voucher.category
 								)}`}
 							</span>
@@ -45,10 +45,10 @@ export const MyComboCard = ({ combo }) => {
 				</ul>
 			</div>
 			<div className="mycombo-card__footer">
-				<div>Hạn dùng: {daysLeft}</div>
+				<div >Hạn dùng: {daysLeft}</div>
 				<div className="renew-panel">
 					<span>Gia hạn: </span>
-					<Button.Group size="small">
+					<Button.Group size="default">
 						<Button className="renew-panel__button">
 							<Icon className="selected-icon" type="right" />
                             Tự động

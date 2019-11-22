@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Account.scss';
 import { LoadingAdvance } from '../common/Loading/Loading';
 import { formatVND } from '../../utils';
 import { Button } from 'antd';
 import { clearAuth } from '../../redux/actions/auth/actions';
+import userDefault from '../../asset/img/usersvg.svg'
 const Account = () => {
-	const dispatch = useDispatch();
-    const {user, wallet} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const { user, wallet } = useSelector((state) => state.auth);
     const handleLogout = () => {
         dispatch(clearAuth())
     }
-	return (
-		<LoadingAdvance>
-			<div className="account">
-				<div className="account__header d-flex-center">
-					<div className="img-wrapper d-flex-center">
-						<img src={user.image} alt="user" />
-					</div>
-					<div className="user-name">{user.fullName}</div>
-				</div>
+    const [imgErorr, setImgErorr] = useState(false)
+
+    const addDefaultSrc = (e) => {
+        setImgErorr(true)
+    }
+    return (
+        <LoadingAdvance>
+            <div className="account">
+                <div className="account__header d-flex-center">
+                    <div className="img-wrapper d-flex-center">
+                        {imgErorr ? <img src={userDefault} alt="user" /> :
+                            <img onError={addDefaultSrc} src={user.image} alt="user" />}
+                    </div>
+                    <div className="user-name">{user.fullName}</div>
+                </div>
                 <div className="account__body">
                     <div>
                         <span>Số dư: </span>
@@ -34,12 +41,12 @@ const Account = () => {
                         <span>{user.phone}</span>
                     </div>
                     <div className="log-out d-flex-center">
-                    <Button onClick={handleLogout}>Đăng xuất</Button>
+                        <Button onClick={handleLogout}>Đăng xuất</Button>
                     </div>
                 </div>
-			</div>
-		</LoadingAdvance>
-	);
+            </div>
+        </LoadingAdvance>
+    );
 };
 
 export default Account;

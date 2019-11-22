@@ -30,7 +30,7 @@ export const ComboDetailCard = ({ combo }) => {
                     </p>
                     <div>
                         <span className="price">
-                            đ{formatVND(combo.value)}
+                        ₫{formatVND(combo.value)}
                         </span>
                         <span className="day">
                             {` /${combo.days} ngày`}
@@ -40,7 +40,7 @@ export const ComboDetailCard = ({ combo }) => {
                     <div className="save-money">
                         Tiết kiệm
                         <span>
-                            {` đ${formatVND(saveMoney)}`}
+                            {` ₫${formatVND(saveMoney)}`}
                         </span>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ export const ComboDetailCard = ({ combo }) => {
                         {combo.voucher_array.map(voucher => (
                             <li key={voucher._id}>
                                 <span className="content">
-                                    {`${voucher.count} x Mã ưu đãi ${voucher.discount > 0 ? voucher.discount + '% tối đa' : ''} đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(voucher.category)}`}
+                                    {`${voucher.count} x Mã ưu đãi ${voucher.discount > 0 ? voucher.discount + '% tối đa' : ''} ₫${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(voucher.category)}`}
                                 </span>
                             </li>
                         ))}
