@@ -7,18 +7,13 @@ import { formatVND, deleteformatVND } from '../../utils'
 import { increaseBalance } from '../../redux/actions/auth/actions'
 export const RechargeWalletModal = ({ visible, close }) => {
     const dispatch = useDispatch()
-    const [money, setMoney] = useState(10000)
+    const [money, setMoney] = useState(50000)
     const onChangeMoney = value => {
         setMoney(value)
     }
     const hasError = useMemo(() => {
-        if (isNaN(+money) !== true) {
-            return false
-        }
-        if (money % 1000 === 0) {
-            return false
-        }
-        if (money >= 10000 && money <= 10000000) {
+        const realMoney = +money
+        if (isNaN(realMoney) !== true && realMoney >= 50000 && realMoney <= 10000000 && realMoney % 1000 === 0) {
             return false
         }
         return true
@@ -27,7 +22,7 @@ export const RechargeWalletModal = ({ visible, close }) => {
     const handleRecharge = () => {
         dispatch(increaseBalance(+money))
         message.success('Nạp tiền thành công', 1)
-        setMoney(10000)
+        setMoney(50000)
         close()
     }
     return (
@@ -52,7 +47,7 @@ export const RechargeWalletModal = ({ visible, close }) => {
                         size="large"
                         value={money}
                         step={50000}
-                        min={10000}
+                        min={50000}
                         max={10000000}
                         formatter={value => formatVND(value)}
                         parser={value => deleteformatVND(value)}
