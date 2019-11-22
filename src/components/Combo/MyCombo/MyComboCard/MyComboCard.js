@@ -36,7 +36,7 @@ export const MyComboCard = ({ combo }) => {
 							<span className="content">
 								{`${voucher.count} x Mã ưu đãi ${voucher.discount > 0
 									? voucher.discount + '% tối đa'
-									: ''} đ${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(
+									: ''} ₫${formatVND(voucher.value)}  Waza${upperCaseFirstCharacter(
 									voucher.category
 								)}`}
 							</span>
