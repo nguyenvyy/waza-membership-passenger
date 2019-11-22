@@ -22,11 +22,11 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreas
 	const handleBuyCombo = () => {
 		setIsBuying(true);
 		requestBuyCombo(user.email, combo._id).then((status) => {
-			decreaseBalance(combo.value)
 			setIsBuying(false);
 			switch (status) {
 				case 200:
 					message.success('Đã mua thành công');
+					decreaseBalance(combo.value)
 					break;
 				case 405:
 					message.warn('Gói hội viên đang được xử dụng');
