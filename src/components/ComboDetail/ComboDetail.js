@@ -96,7 +96,7 @@ const ComboDetail = ({ history, location }) => {
                                     2: Chọn gói hội viên khi bạn muốn sử dụng trên các dịch vụ khác của Waza. Mức giá cuối cùng sẻ hiển thị khi ưu đãi được áp dụng thành công.
                             </li>
                                 <li>
-                                    3: Sử dụng các ưu đãi này trong vòng 14 ngày kể từ ngày mua/thanh toán gói.
+                                    3: Sử dụng các ưu đãi này trong vòng {combo.days} ngày kể từ ngày mua/thanh toán gói.
                             </li>
                                 <li>
                                     ---- Gói Hội Viên - Điều khoản và Điều kiện ----
