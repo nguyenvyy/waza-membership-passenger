@@ -8,7 +8,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreas
 	const disabled = useMemo(
 		() => {
 			if (combo !== undefined) {
-				return wallet.balance > combo.value ? false : true;
+				return wallet.balance >= combo.value ? false : true;
 			}
 			return true;
 		},
