@@ -21,7 +21,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreas
 
 	const handleBuyCombo = () => {
 		setIsBuying(true);
-		requestBuyCombo(user.email, combo._id).then((status) => {
+		requestBuyCombo(user._id, combo._id).then((status) => {
 			setIsBuying(false);
 			switch (status) {
 				case 200:
