@@ -14,7 +14,8 @@ export const PolicyCard = ({ policy, combos }) => {
         const serviceList = combos.map(combo => {
             return combo.voucher_array.map(voucher => voucher.category)
         })
-        let result = [...new Set(serviceList.flat())].map(service => upperCaseFirstCharacter(service))
+        const flat = serviceList.reduce((acc, curr) => [...curr, ...acc], []) 
+        let result = [...new Set(flat)].map(service => upperCaseFirstCharacter(service))
         return result.join(' ∙ ')
     }, [combos])
 
