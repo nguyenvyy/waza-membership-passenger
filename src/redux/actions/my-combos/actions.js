@@ -14,10 +14,10 @@ export const receiveBoughtCombo = (boughtCombo) => ({ type: RECEIVE_BOUGHT_COMBO
 export const stopCombo = (stopedCombo) => ({ type: STOP_COMBO, stopedCombo });
 export const receiveMyCombos = (myCombos) => ({ type: RECEIVE_MY_COMBOS, myCombos });
 export const fetchMyCombo = () => ({ type: FETCH_MY_COMBO });
-export const requestBuyCombo = (email, comboId) => async (dispatch) => {
+export const requestBuyCombo = (userId, comboId) => async (dispatch) => {
 	try {
 		dispatch(sendRequest());
-		const res = await buyComboAPI(email, comboId);
+		const res = await buyComboAPI(userId, comboId);
 		dispatch(receiveBoughtCombo(res.data));
 		dispatch(stopRequest());
 		return 200;
@@ -32,10 +32,10 @@ export const requestBuyCombo = (email, comboId) => async (dispatch) => {
 	}
 };
 
-export const requestMyCombo = (email) => async (dispatch) => {
+export const requestMyCombo = (userId) => async (dispatch) => {
 	try {
 		dispatch(sendRequest());
-		const res = await getMyComboAPI(email);
+		const res = await getMyComboAPI(userId);
 		dispatch(receiveMyCombos(res.data));
 		dispatch(fetchMyCombo());
 		dispatch(stopRequest());

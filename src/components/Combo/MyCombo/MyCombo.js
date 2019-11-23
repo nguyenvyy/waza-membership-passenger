@@ -7,7 +7,7 @@ import { MyComboCard } from './MyComboCard/MyComboCard';
 
 export const MyCombo = ({ isFetching, user, combos, requestMyCombo, fetched }) => {
 	useEffect(() => {
-		if (fetched === false) requestMyCombo(user.email);
+		if (fetched === false) requestMyCombo(user._id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
