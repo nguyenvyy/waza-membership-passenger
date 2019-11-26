@@ -10,11 +10,12 @@ import userDefault from '../../asset/img/usersvg.svg'
 import { fetchRanks } from '../../redux/actions/rank-actions/action';
 const Account = () => {
     const dispatch = useDispatch();
-    const {items: ranks, isFetching} = useSelector(state => state.rank)
+    const {items: ranks} = useSelector(state => state.rank)
     useEffect(() => {
         if(ranks.length === 0) {
             dispatch(fetchRanks())
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const { user, wallet } = useSelector((state) => state.auth);
     const myRank = useMemo(() => {
