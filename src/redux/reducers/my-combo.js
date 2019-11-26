@@ -4,7 +4,8 @@ import {
 	RECEIVE_BOUGHT_COMBO,
 	RECEIVE_MY_COMBOS,
 	STOP_COMBO,
-	FETCH_MY_COMBO
+	FETCH_MY_COMBO,
+	CLEAR_MY_COMBOS
 } from '../actions/my-combos/types';
 
 const initState = {
@@ -48,6 +49,8 @@ export const myComboReducer = (state = initState, action) => {
 				...state,
 				items: newItems
 			};
+		case CLEAR_MY_COMBOS:
+			return {...initState}
 		default:
 			return state;
 	}

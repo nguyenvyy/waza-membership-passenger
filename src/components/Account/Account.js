@@ -5,12 +5,14 @@ import { LoadingAdvance } from '../common/Loading/Loading';
 import { formatVND } from '../../utils';
 import { Button } from 'antd';
 import { clearAuth } from '../../redux/actions/auth/actions';
+import { clearMyCombo } from '../../redux/actions/my-combos/actions'
 import userDefault from '../../asset/img/usersvg.svg'
 const Account = () => {
     const dispatch = useDispatch();
     const { user, wallet } = useSelector((state) => state.auth);
     const handleLogout = () => {
         dispatch(clearAuth())
+        dispatch(clearMyCombo())
     }
     const [imgErorr, setImgErorr] = useState(false)
 

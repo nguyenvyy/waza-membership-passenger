@@ -4,7 +4,8 @@ import {
 	RECEIVE_BOUGHT_COMBO,
 	STOP_COMBO,
 	RECEIVE_MY_COMBOS,
-	FETCH_MY_COMBO
+	FETCH_MY_COMBO,
+	CLEAR_MY_COMBOS
 } from './types';
 import { buyComboAPI, getMyComboAPI } from './services';
 
@@ -14,6 +15,7 @@ export const receiveBoughtCombo = (boughtCombo) => ({ type: RECEIVE_BOUGHT_COMBO
 export const stopCombo = (stopedCombo) => ({ type: STOP_COMBO, stopedCombo });
 export const receiveMyCombos = (myCombos) => ({ type: RECEIVE_MY_COMBOS, myCombos });
 export const fetchMyCombo = () => ({ type: FETCH_MY_COMBO });
+export const clearMyCombo = () => ({type: CLEAR_MY_COMBOS})
 export const requestBuyCombo = (userId, comboId) => async (dispatch) => {
 	try {
 		dispatch(sendRequest());
