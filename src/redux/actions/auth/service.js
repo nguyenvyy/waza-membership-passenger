@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { coreURL } from '../../../constant'
+// import { coreURL } from '../../../constant'
+import { coreVirtualService as coreURL } from '../../../test/virtual-service'
 
 export const loginAPI = (email, password) => axios(
     {
@@ -16,6 +17,8 @@ export const loginAPI = (email, password) => axios(
     }
 ).then(res => res.data.token)
 .catch(err => err)
+
+
 export const getUserInfoAPI = (id, token) => axios(
     {
         method: 'GET',
@@ -27,3 +30,8 @@ export const getUserInfoAPI = (id, token) => axios(
         },
     }
 )
+.then(res => res)
+.catch(err => err)
+
+
+

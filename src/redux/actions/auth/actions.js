@@ -1,6 +1,7 @@
 import { STOP_REQUEST, SEND_REQUEST, RECEIVE_USER, RECEIVE_WALLTET, RECEIVE_REWARD, CLEAR_AUTH, INCREASE_BALANCE, DECREASE_BALANCE } from "./types";
 import { loginAPI, getUserInfoAPI } from "./service";
 import jwt from 'jwt-decode'
+
 export const stopRequest = () => ({type: STOP_REQUEST})
 export const sendRequest = () => ({type: SEND_REQUEST})
 export const receiveUser = user => ({type: RECEIVE_USER, user})
