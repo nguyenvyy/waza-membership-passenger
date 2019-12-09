@@ -25,3 +25,4 @@ export const getMyComboAPI = userId => Axios({
         user_name: userId
     }
 })
+.then(res => res.data)

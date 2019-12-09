@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import './Combos.scss';
 import { ComboCard } from '../ComboCard/ComboCard';
 import { LoadingAdvance, Loading } from '../../common/Loading/Loading';
-import { Result, Button } from 'antd';
 import { HandleError } from '../../common/HandlError/HandleError';
 
 export const Combos = ({ hasError, isCompleted, isFetching, fetchActiveCombos, newCombos }) => {

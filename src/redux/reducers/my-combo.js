@@ -4,14 +4,15 @@ import {
 	RECEIVE_BOUGHT_COMBO,
 	RECEIVE_MY_COMBOS,
 	STOP_COMBO,
-	FETCH_MY_COMBO,
+	CATCH_ERROR_MY_COMBO,
 	CLEAR_MY_COMBOS
 } from '../actions/my-combos/types';
 
 const initState = {
 	items: [],
 	isFetching: false,
-	fetched: false
+	isCompleted: false,
+	hasError: false,
 };
 
 export const myComboReducer = (state = initState, action) => {
@@ -19,27 +20,30 @@ export const myComboReducer = (state = initState, action) => {
 		case SEND_REQUEST:
 			return {
 				...state,
-				isFetching: true
+				isFetching: true,
+				hasError: false
 			};
 		case STOP_REQUEST:
 			return {
 				...state,
 				isFetching: false
 			};
+		case CATCH_ERROR_MY_COMBO:
+			return {
+				...state,
+				hasError: true
+			}
 		case RECEIVE_BOUGHT_COMBO:
 			return {
 				...state,
 				items: [ action.boughtCombo, ...state.items ],
+				
 			};
-		case FETCH_MY_COMBO:
-			return {
-				...state,
-				fetched: true
-			}
 		case RECEIVE_MY_COMBOS:
 			return {
 				...state,
 				items: [ ...action.myCombos ],
+				isCompleted: true
 			};
 		case STOP_COMBO:
 			let newItems = state.items.slice();
