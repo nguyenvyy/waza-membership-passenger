@@ -12,20 +12,20 @@ export const increaseBalance = money => ({type: INCREASE_BALANCE, money})
 export const decreaseBalance = money => ({type: DECREASE_BALANCE, money})
 
 export const requestLogin = (email, password) => async (dispatch) => {
+    dispatch(sendRequest())
     try {
-        dispatch(sendRequest())
         const token = await loginAPI(email, password)
         const id = jwt(token)._id
-        const userRes = await getUserInfoAPI(id, token)
-        const user = {
-            ...userRes.data,
+        const user= await getUserInfoAPI(id, token)
+        const userWithToken = {
+            ...user,
             token
         }
-        dispatch(receiveUser(user))
-        dispatch(stopRequest())
-        return 200
+        dispatch(receiveUser(userWithToken))
     } catch (error) {
         dispatch(stopRequest())
         return 400
     }
+    dispatch(stopRequest())
+    return 200
 }

@@ -18,7 +18,6 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreas
 	const goBack = () => {
 		history.goBack();
 	};
-
 	const handleBuyCombo = () => {
 		setIsBuying(true);
 		requestBuyCombo(user._id, combo._id).then((status) => {

@@ -45,13 +45,6 @@ export const checkIsActiveCombo = (combo) => {
 	return false;
 };
 
-export const getNewCombos = createSelector([ getCombo ], (combos) => {
-	return combos.filter((combo) => {
-		const fromDate = new Date(combo.from_date).getTime();
-		const curr = Date.now();
-		const duration = moment.duration(curr - fromDate, 'milliseconds');
-		const days = duration.asDays();
-		if (days < 3) return true;
-		return false;
-	});
-});
+export const getNewCombos = (combos) => {
+	return combos.slice(combos.length - 5,combos.length).reverse();
+};
