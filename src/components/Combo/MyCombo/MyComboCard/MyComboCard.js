@@ -3,24 +3,37 @@ import './MyComboCard.scss';
 import moment from 'moment';
 import { formatVND, upperCaseFirstCharacter } from '../../../../utils';
 import { Button, Icon } from 'antd';
-import { formatOfDateFromDB } from '../../../../constant';
 
 export const MyComboCard = ({ combo }) => {
 	const [daysLeft, setDaysLeft] = useState('')
 	useEffect(() => {
+		// calculateDaysLeft init
 		setDaysLeft(calculateDaysLeft())
+		let interval, timeout
+		const curr = new Date();
+		const nextHour = new Date(curr);
+		nextHour.setHours(curr.getHours() + 1, 0, 0)
 		const _1Hour = 3600000;
-		let interval = setInterval(() => {
-			setDaysLeft(calculateDaysLeft())
-		}, _1Hour);
-		return () => clearInterval(interval)
+		// count down from curr -> next hour
+		timeout = setTimeout(() => {
+			// calculateDaysLeft per hour
+			interval = setInterval(() => {
+				setDaysLeft(calculateDaysLeft())
+			}, _1Hour);
+		}, nextHour - curr)
+		return () => {
+			// clear timeout, interval when component unmount
+			clearInterval(interval)
+			clearTimeout(timeout)
+		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []) 
 
 	const calculateDaysLeft = () => {
 		const curr = Date.now();
-		const toDate = moment(combo.to_date, formatOfDateFromDB).valueOf();
-		const result = moment.duration(toDate - curr, 'milliseconds').asHours();
+		const toDate = new Date(combo.to_date);
+		toDate.setHours(23,59,59)
+		const result = moment.duration(toDate.getTime() - curr, 'milliseconds').asHours();
 		const day = Math.floor(result/24)
 		const hours = Math.floor(result%24)
 		return `${day} ngày ${hours} giờ`

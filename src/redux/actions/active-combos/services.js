@@ -7,27 +7,13 @@ export const getActiveCombosAPI = () => axios(
         method: 'GET',
         responseType: "json",
         url: `${serverURL}/combos/active`,
+        timeout: 10000,
         params: {
             page: 0,
             limit: 200
         }
     }
-)
-// axios(
-//     {
-//         method: 'GET',
-//         responseType: "json",
-//         url: `${serverURL}/comboAPI/Promotions`,
-//         params: {
-//             user_name: 'admin@gmail.com',
-//             service: 'food'
-//         }
-//     }
-// ).then(res => {
-//     debugger
-// }).catch(err => {
-//     debugger
-// })
+).then(res => res.data)
 
 export const getDetailComboAPI = (id) => axios(
     {
@@ -41,6 +27,8 @@ export const getPolicyAPI = (id) => axios(
     {
         method: 'GET',
         responseType: "json",
+        timeout: 5000,
         url: `${serverURL}/policies/${id}`,
     }
 )
+.then(res => res.data)

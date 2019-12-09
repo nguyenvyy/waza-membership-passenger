@@ -3,12 +3,14 @@ import { BrowserCombo } from '../../components/Combo/BrowserCombo/BrowserCombo'
 import { fetchActiveCombos } from '../actions/active-combos/actions'
 import { groupCombosByPolicy } from '../selector/combo'
 const mapState = ({ activeCombo }) => {
-    const { items, isFetching } = activeCombo
+	const { isFetching, items, hasError, isCompleted } = activeCombo;
     const comboGroups = groupCombosByPolicy(activeCombo)
     return {
         combos: items,
         isFetching,
-        comboGroups
+        comboGroups,
+        hasError,
+		isCompleted
     }
 }
 

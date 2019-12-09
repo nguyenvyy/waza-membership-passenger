@@ -9,6 +9,7 @@ export const buyComboAPI = (userId, comboId) => Axios({
     headers: {
         'Content-Type': 'application/json',
     },
+    timeout: 10000,
     data: {
         user_name: userId,
         combo_id: comboId
@@ -19,7 +20,9 @@ export const getMyComboAPI = userId => Axios({
     method: 'GET',
     url: `${serverURL}/passenger/mycombo`,
     responseType: 'json',
+    timeout: 20000,
     params: {
         user_name: userId
     }
 })
+.then(res => res.data)
