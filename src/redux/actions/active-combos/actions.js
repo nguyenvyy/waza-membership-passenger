@@ -14,7 +14,7 @@ export const fetchActiveCombos = _ => async (dispatch) => {
     try {
         const combos = await getActiveCombosAPI();
         let policyIds = deduplicate(combos.map(item => item.policy_id))
-        let policies = await Promise.all(policyIds.map(item => getPolicyAPI(item).then(item => item.data)))
+        let policies = await Promise.all(policyIds.map(item => getPolicyAPI(item)))
         dispatch(receiveActiveCombos(combos))
         dispatch(receivePolicies(policies))
     } catch (error) {

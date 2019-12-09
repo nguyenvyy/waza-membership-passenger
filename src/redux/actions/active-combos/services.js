@@ -14,7 +14,6 @@ export const getActiveCombosAPI = () => axios(
         }
     }
 ).then(res => res.data)
-.catch(err => err)
 
 export const getDetailComboAPI = (id) => axios(
     {
@@ -28,7 +27,8 @@ export const getPolicyAPI = (id) => axios(
     {
         method: 'GET',
         responseType: "json",
-        timeout: 10000,
+        timeout: 5000,
         url: `${serverURL}/policies/${id}`,
     }
 )
+.then(res => res.data)
