@@ -18,16 +18,13 @@ export const Combos = ({ hasError, isCompleted, isFetching, fetchActiveCombos, n
 		slidesToScroll: 1,
 		arrows: false
 	};
-	const handleError = () => {
-		fetchActiveCombos();
-	};
 	return (
 		<div className="combos">
 			<b className="combos__title"> Các gói hội viên mới</b>
 			<LoadingAdvance loading={isFetching} render={() => <Loading height="240px" />}>
 				{hasError ? (
 					<div className="d-flex-center" style={{ height: '240px' }}>
-						<HandleError retry={handleError} />
+						<HandleError retry={fetchActiveCombos} />
 					</div>
 				) : (
 					<div className="combos__slick">

@@ -8,6 +8,9 @@
 	bottom: 0;
 	z-index: 200;
 	flex-direction: column;
+	& .sub-title {
+		font-size: 1.1em;
+	}
 	&__item {
 		color: #5e35b1;
 		margin: 10px 0;
@@ -32,8 +35,6 @@
 }
 
 .not-found-data {
-	height: 100vh;
-	background: transparent;
 	flex-direction: column;
 	&__item {
 		color: #5e35b1;
