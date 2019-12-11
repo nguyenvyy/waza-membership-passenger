@@ -11,7 +11,7 @@ export const clearAuth = () => ({type: CLEAR_AUTH})
 export const increaseBalance = money => ({type: INCREASE_BALANCE, money})
 export const decreaseBalance = money => ({type: DECREASE_BALANCE, money})
 
-export const requestLogin = (email, password) => async (dispatch) => {
+export const requestLogin = (email, password, isRemember) => async (dispatch) => {
     dispatch(sendRequest())
     try {
         const token = await loginAPI(email, password)
@@ -22,6 +22,10 @@ export const requestLogin = (email, password) => async (dispatch) => {
             token
         }
         dispatch(receiveUser(userWithToken))
+        // save user info in localstorage 
+        if (isRemember) {
+            localStorage.setItem('user-waza-membership', JSON.stringify(userWithToken))
+        }
     } catch (error) {
         dispatch(stopRequest())
         return 400

@@ -26,6 +26,7 @@ const Account = () => {
         return <Tag color="blue">loading...</Tag>
     }, [user, ranks])
     const handleLogout = () => {
+        localStorage.clear()
         dispatch(clearAuth())
         dispatch(clearMyCombo())
     }

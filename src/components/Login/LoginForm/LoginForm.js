@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Input, Icon, Checkbox, Button, message } from 'antd'
-import { requestLogin } from '../../../redux/actions/auth/actions'
+import { requestLogin, receiveUser } from '../../../redux/actions/auth/actions'
 import './LoginForm.scss'
 
 export const LoginForm = ({ isLoading, dispatch }) => {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isRemember, setIsRemember] = useState(false)
     useEffect(() => {
-        const userStorage = localStorage.getItem('user-waza')
+        const userStorage = localStorage.getItem('user-waza-membership')
         if (userStorage !== null) {
             const user = JSON.parse(userStorage)
-            setEmail(user.email)
-            setPassword(user.password)
+            dispatch(receiveUser(user))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const onChangeRemember = e => {
         setIsRemember(!isRemember)
@@ -29,16 +28,10 @@ export const LoginForm = ({ isLoading, dispatch }) => {
     }
 
     const login = _ => {
-        dispatch(requestLogin(email, password)).then(res => {
+        dispatch(requestLogin(email, password, isRemember)).then(res => {
             if (res === 200) {
                 message.success('Đăng nhập thành công', 1)
-                if (isRemember) {
-                    const user = {
-                        email,
-                        password
-                    }
-                    localStorage.setItem('user-waza', JSON.stringify(user))
-                }
+
             } else {
                 message.error('Email hoặc mật khẩu không hợp lệ', 1)
             }
