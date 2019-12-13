@@ -29,12 +29,12 @@ export const formatVND = value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',
 export const deleteformatVND = value => value.replace(/\$\s?|(,*)/g, '')
 
 export function debounce(func, wait) {
-    var timeout;
+    let timeout;
     return function () {
-        var context = this,
+        let context = this,
             args = arguments;
 
-        var executeFunction = function () {
+        let executeFunction = function () {
             func.apply(context, args);
         };
 
@@ -51,5 +51,30 @@ export function deduplicate(arr) {
 export const upperCaseFirstCharacter = string => {
     const slice = string.slice(1);
     return string[0].toLocaleUpperCase() + slice
-    
+
+}
+
+// save cookie
+export function setCookie(cname, cvalue, exdays) {
+    let d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+// get cookie
+export function getCookie(cname) {
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return null;
 }
