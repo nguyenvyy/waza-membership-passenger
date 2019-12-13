@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Form, Input, Icon, Checkbox, Button, message } from 'antd'
 import { requestLogin, receiveUser } from '../../../redux/actions/auth/actions'
 import './LoginForm.scss'
+import { getCookie } from '../../../utils'
 
 export const LoginForm = ({ isLoading, dispatch }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isRemember, setIsRemember] = useState(false)
     useEffect(() => {
-        const userStorage = localStorage.getItem('user-waza-membership')
+        const userStorage = getCookie('user-waza-membership')
         if (userStorage !== null) {
             const user = JSON.parse(userStorage)
             dispatch(receiveUser(user))
