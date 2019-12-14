@@ -8,33 +8,12 @@ import {
 	INCREASE_BALANCE,
 	DECREASE_BALANCE
 } from '../actions/auth/types';
-// const initState = {
-// 	user: {
-// 		email: 'nguyenvy@gmail.com',
-// 		fullName: 'nguyen vy',
-// 		phone: '12312312',
-// 		image: '',
-// 	},
-// 	wallet: {
-// 		balance: 0,
-// 		id: 'x'
-// 	},
-// 	reward: {
-// 		point: 1000,
-// 		id: 2
-// 	},
-// 	isLoggedIn: true,
-// 	isLoading: false
-// };
+
 const initState = {
 	user: null,
 	wallet: {
 		balance: 0,
 		id: 'x'
-	},
-	reward: {
-		point: 1000,
-		id: 2
 	},
 	isLoggedIn: false,
 	isLoading: false

@@ -5,7 +5,7 @@ const initState = {
     policies: [],
     detail: null,
     hasError: false,
-    isCompleted: false,
+    isFetched: false,
     isFetching: false,
 }
 
@@ -36,7 +36,7 @@ export const activeComboReducer = (state = initState, action) => {
             return {
                 ...state,
                 policies: [...action.policies],
-                isCompleted: true
+                isFetched: true
             }
         case RECEIVE_DETAIL_COMBO:
             return {

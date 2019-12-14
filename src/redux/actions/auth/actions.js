@@ -1,11 +1,9 @@
 import jwt from 'jwt-decode'
-import { STOP_REQUEST, SEND_REQUEST, RECEIVE_USER, RECEIVE_WALLTET, RECEIVE_REWARD, CLEAR_AUTH, INCREASE_BALANCE, DECREASE_BALANCE } from "./types";
+import { STOP_REQUEST, SEND_REQUEST, RECEIVE_USER, CLEAR_AUTH, INCREASE_BALANCE, DECREASE_BALANCE } from "./types";
 import { loginAPI, getUserInfoAPI } from "./service";
 export const stopRequest = () => ({ type: STOP_REQUEST })
 export const sendRequest = () => ({ type: SEND_REQUEST })
 export const receiveUser = user => ({ type: RECEIVE_USER, user })
-export const receiveWallet = wallet => ({ type: RECEIVE_WALLTET, wallet })
-export const receiveReward = reward => ({ type: RECEIVE_REWARD, reward })
 export const clearAuth = () => ({ type: CLEAR_AUTH })
 //mockup wallet
 export const increaseBalance = money => ({ type: INCREASE_BALANCE, money })
@@ -19,7 +17,7 @@ export const requestLogin = (email, password) => async (dispatch) => {
         if (token === 503) throw new Error(token)
         const id = jwt(token)._id
         user = await getUserInfoAPI(id, token)
-        if (user !== 404) throw new Error(user)
+        if (user === 404) throw new Error(user)
 
     } catch (error) {
         dispatch(stopRequest())
