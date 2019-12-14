@@ -2,12 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Account.scss';
 import { LoadingAdvance } from '../common/Loading/Loading';
-import { formatVND } from '../../utils';
+import { formatVND, clearCookie } from '../../utils';
 import { Button, Tag } from 'antd';
 import { clearAuth } from '../../redux/actions/auth/actions';
 import { clearMyCombo } from '../../redux/actions/my-combos/actions'
 import userDefault from '../../asset/img/usersvg.svg'
 import { fetchRanks } from '../../redux/actions/rank-actions/action';
+import { cookieName } from '../../constant';
 const Account = () => {
     const dispatch = useDispatch();
     const {items: ranks} = useSelector(state => state.rank)
@@ -26,9 +27,10 @@ const Account = () => {
         return <Tag color="blue">loading...</Tag>
     }, [user, ranks])
     const handleLogout = () => {
-        localStorage.clear()
+        clearCookie(cookieName)
         dispatch(clearAuth())
         dispatch(clearMyCombo())
+        
     }
     const [imgErorr, setImgErorr] = useState(false)
 
