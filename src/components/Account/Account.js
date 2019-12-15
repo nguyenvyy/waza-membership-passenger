@@ -9,18 +9,19 @@ import { clearMyCombo } from '../../redux/actions/my-combos/actions'
 import userDefault from '../../asset/img/usersvg.svg'
 import { fetchRanks } from '../../redux/actions/rank-actions/action';
 import { cookieName } from '../../constant';
+import { clearWallet } from '../../redux/actions/wallet/actions';
 const Account = () => {
     const dispatch = useDispatch();
-    const {items: ranks} = useSelector(state => state.rank)
+    const { items: ranks } = useSelector(state => state.rank)
     useEffect(() => {
-        if(ranks.length === 0) {
+        if (ranks.length === 0) {
             dispatch(fetchRanks())
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    const { user, wallet } = useSelector((state) => state.auth);
+    const { auth: { user }, wallet } = useSelector((state) => state);
     const myRank = useMemo(() => {
-        if(user !== null && ranks.length > 0) {
+        if (user !== null && ranks.length > 0) {
             let rank = ranks.find(item => user.Rank === item.RankValue)
             return rank.RankName
         }
@@ -30,7 +31,8 @@ const Account = () => {
         clearCookie(cookieName)
         dispatch(clearAuth())
         dispatch(clearMyCombo())
-        
+        dispatch(clearWallet())
+
     }
     const [imgErorr, setImgErorr] = useState(false)
 
@@ -50,7 +52,7 @@ const Account = () => {
                 <div className="account__body">
                     <div>
                         <span>Số dư: </span>
-                        <span>{formatVND(wallet.balance)} VNĐ</span>
+                        <span>{formatVND(wallet.electronic)} VNĐ</span>
                     </div>
                     <div>
                         <span>Điểm tích lũy: </span>

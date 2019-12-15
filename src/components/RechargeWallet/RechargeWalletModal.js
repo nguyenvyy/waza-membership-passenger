@@ -67,8 +67,8 @@ export const RechargeWalletModal = ({ visible, close }) => {
             ]}
         >
             <Form layout="horizontal">
-                <div>
-                    <p>Ví tiền mặc: {formatVND(cash)} VNĐ</p>
+                <div >
+                    <p className="cash">Ví tiền mặc: {formatVND(cash)} VNĐ</p>
                 </div>
                 <Form.Item label="Nhập số tiền cần nạp:"
                     help="số tiền nạp tối thiểu là 50,000, tối đa 10,000,000 và phải là bội số của 1,000"

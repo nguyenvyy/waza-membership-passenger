@@ -4,11 +4,11 @@ import './Payment.scss';
 import { formatVND } from '../../utils';
 import { Button, Icon, Alert, message } from 'antd';
 
-export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreaseBalance }) => {
+export const Payment = ({ combo, wallet, user, history, requestBuyCombo, subtractEMoney }) => {
 	const disabled = useMemo(
 		() => {
 			if (combo !== undefined) {
-				return wallet.balance >= combo.value ? false : true;
+				return wallet.electronic >= combo.value ? false : true;
 			}
 			return true;
 		},
@@ -25,7 +25,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreas
 			switch (status) {
 				case 200:
 					message.success('Đã mua thành công');
-					decreaseBalance(combo.value)
+					subtractEMoney(combo.value)
 					break;
 				case 405:
 					message.warn('Gói hội viên đang được xử dụng');
@@ -67,7 +67,7 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, decreas
 							<Icon className="wallet__icon" theme="filled" type="wallet" />
 							<div className="wallet__balance">
 								<div>Số dư</div>
-								<div>VND {formatVND(wallet.balance)} </div>
+								<div>VND {formatVND(wallet.electronic)} </div>
 							</div>
 						</div>
 						{disabled && <Alert message="Bạn không đủ số dư để để mua. Hãy nạp thêm!" type="warning" />}

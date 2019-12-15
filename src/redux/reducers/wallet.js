@@ -1,4 +1,4 @@
-import { SEND_REQUEST_WALLET, STOP_REQUEST_WALLET, CATCH_ERROR_WALLET, SAVE_WALLET_INFO, ADD_CASH, TRANSFER_CASH_TO_ELECTRONIC, SUBTRACT_E_MONEY } from "../actions/wallet/types"
+import { SEND_REQUEST_WALLET, STOP_REQUEST_WALLET, CATCH_ERROR_WALLET, SAVE_WALLET_INFO, ADD_CASH, TRANSFER_CASH_TO_ELECTRONIC, SUBTRACT_E_MONEY, CLEAR_WALLET } from "../actions/wallet/types"
 
 const initState = {
     electronic: null,
@@ -48,6 +48,8 @@ export const walletReducer = (state = initState, action) => {
                 cash: state.cash - action.money,
                 electronic: state.electronic + action.money
             }
+        case CLEAR_WALLET: 
+            return {...initState}
         default:
             return state
     }

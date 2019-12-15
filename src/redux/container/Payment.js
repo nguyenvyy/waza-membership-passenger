@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import { Payment } from '../../components/Payment/Payment'
 import { requestBuyCombo } from '../actions/my-combos/actions'
-import { decreaseBalance } from '../actions/auth/actions'
+import { subtractEMoney } from '../actions/wallet/actions'
 const mapState = (state, ownProps) => {
-    const {  auth: { wallet, user } } = state
+    const {  auth: { user }, wallet } = state
     const { location, history } = ownProps
     let combo
     if(location.state === undefined)
@@ -20,6 +20,7 @@ const mapState = (state, ownProps) => {
 
 const mapDispatch = {
     requestBuyCombo,
-    decreaseBalance
+    subtractEMoney
 }
+
 export default connect(mapState, mapDispatch)(Payment)
