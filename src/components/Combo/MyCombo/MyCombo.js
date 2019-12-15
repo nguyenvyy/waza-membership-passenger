@@ -12,9 +12,9 @@ export const MyCombo = ({
 	user, 
 	combos, 
 	requestMyCombo, 
-	isCompleted }) => {
+	isFetched }) => {
 	useEffect(() => {
-		if (isCompleted === false) requestMyCombo(user._id);
+		if (isFetched === false) requestMyCombo(user._id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
@@ -26,7 +26,7 @@ export const MyCombo = ({
 					</div>
 				) : (
 					<Empty
-						isEmpty={combos.length === 0 && isCompleted}
+						isEmpty={combos.length === 0 && isFetched}
 						alternative={
 							<div className="d-flex-center" style={{height: "calc(100vh - 60px - 80px)" }}>
 								<NotFoundData content="Bạn không có gói Hội Viên nào." />

@@ -11,7 +11,7 @@ import {
 const initState = {
 	items: [],
 	isFetching: false,
-	isCompleted: false,
+	isFetched: false,
 	hasError: false,
 };
 
@@ -43,7 +43,7 @@ export const myComboReducer = (state = initState, action) => {
 			return {
 				...state,
 				items: [ ...action.myCombos ],
-				isCompleted: true
+				isFetched: true
 			};
 		case STOP_COMBO:
 			let newItems = state.items.slice();

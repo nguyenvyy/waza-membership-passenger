@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { Form, Input, Icon, Checkbox, Button, message } from 'antd'
 import { requestLogin, receiveUser } from '../../../redux/actions/auth/actions'
 import './LoginForm.scss'
-import { getCookie } from '../../../utils'
+import { getCookie, setCookie } from '../../../utils'
+import { cookieName } from '../../../constant'
+import { getWallet } from '../../../redux/actions/wallet/actions'
 
 export const LoginForm = ({ isLoading, dispatch }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isRemember, setIsRemember] = useState(false)
     useEffect(() => {
-        const userStorage = getCookie('user-waza-membership')
+        const userStorage = getCookie(cookieName)
         if (userStorage !== null) {
             const user = JSON.parse(userStorage)
             dispatch(receiveUser(user))
+            dispatch(getWallet())
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const onChangeRemember = e => {
         setIsRemember(!isRemember)
@@ -29,10 +32,15 @@ export const LoginForm = ({ isLoading, dispatch }) => {
     }
 
     const login = _ => {
-        dispatch(requestLogin(email, password, isRemember)).then(res => {
-            if (res === 200) {
+        dispatch(requestLogin(email, password)).then(res => {
+            if (res.status === 200) {
                 message.success('Đăng nhập thành công', 1)
-
+                dispatch(getWallet())
+                // save user info in cookie with expires: 2 days 
+                if (isRemember) {
+                    setCookie(cookieName, JSON.stringify(res.user), 2);
+                }
+                // get wallet
             } else {
                 message.error('Email hoặc mật khẩu không hợp lệ', 1)
             }

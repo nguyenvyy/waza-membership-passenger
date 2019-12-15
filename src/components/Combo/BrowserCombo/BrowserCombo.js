@@ -16,10 +16,10 @@ export const BrowserCombo = ({
     comboGroups,
     isFetching,
     hasError,
-    isCompleted,
+    isFetched,
 }) => {
     useEffect(() => {
-        if (isCompleted === false)
+        if (isFetched === false)
             fetchActiveCombos()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -33,7 +33,7 @@ export const BrowserCombo = ({
                         <HandleError retry={fetchActiveCombos} />
                     </div>
                 ) : (
-                        <Empty isEmpty={ isCompleted=== true && Object.keys(comboGroups).length === 0} alternative={
+                        <Empty isEmpty={ isFetched=== true && Object.keys(comboGroups).length === 0} alternative={
                             <div className="d-flex-center" style={{ height: "calc(100vh - 60px - 80px)" }}>
                                 <NotFoundData content="Hiện tại đang không có gói vào được bán!" />
                             </div>

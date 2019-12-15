@@ -78,3 +78,11 @@ export function getCookie(cname) {
     }
     return null;
 }
+
+// clear cookie
+// save cookie
+export function clearCookie(cname) {
+    let d = new Date();
+    let expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=;" + expires + ";path=/";
+}

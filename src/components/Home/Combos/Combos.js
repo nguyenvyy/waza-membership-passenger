@@ -5,9 +5,9 @@ import { ComboCard } from '../ComboCard/ComboCard';
 import { LoadingAdvance, Loading } from '../../common/Loading/Loading';
 import { HandleError } from '../../common/HandlError/HandleError';
 
-export const Combos = ({ hasError, isCompleted, isFetching, fetchActiveCombos, newCombos }) => {
+export const Combos = ({ hasError, isFetched, isFetching, fetchActiveCombos, newCombos }) => {
 	useEffect(() => {
-		if (isCompleted === false) fetchActiveCombos();
+		if (isFetched === false) fetchActiveCombos();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	const settings = {

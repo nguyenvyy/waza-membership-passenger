@@ -9,7 +9,7 @@ export const buyComboAPI = (userId, comboId) => Axios({
     headers: {
         'Content-Type': 'application/json',
     },
-    timeout: 10000,
+    timeout: 20000,
     data: {
         user_name: userId,
         combo_id: comboId
