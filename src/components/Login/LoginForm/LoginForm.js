@@ -4,6 +4,7 @@ import { requestLogin, receiveUser } from '../../../redux/actions/auth/actions'
 import './LoginForm.scss'
 import { getCookie, setCookie } from '../../../utils'
 import { cookieName } from '../../../constant'
+import { getWallet } from '../../../redux/actions/wallet/actions'
 
 export const LoginForm = ({ isLoading, dispatch }) => {
     const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ export const LoginForm = ({ isLoading, dispatch }) => {
         if (userStorage !== null) {
             const user = JSON.parse(userStorage)
             dispatch(receiveUser(user))
+            dispatch(getWallet())
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -33,6 +35,7 @@ export const LoginForm = ({ isLoading, dispatch }) => {
         dispatch(requestLogin(email, password)).then(res => {
             if (res.status === 200) {
                 message.success('Đăng nhập thành công', 1)
+                dispatch(getWallet())
                 // save user info in cookie with expires: 2 days 
                 if (isRemember) {
                     setCookie(cookieName, JSON.stringify(res.user), 2);
