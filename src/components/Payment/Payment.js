@@ -7,7 +7,7 @@ import { Button, Icon, Alert, message } from 'antd';
 export const Payment = ({ combo, wallet, user, history, requestBuyCombo, subtractEMoney }) => {
 	const disabled = useMemo(
 		() => {
-			if (combo !== undefined) {
+			if (combo !== undefined && wallet.electronic !== null) {
 				return wallet.electronic >= combo.value ? false : true;
 			}
 			return true;
@@ -67,10 +67,12 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, subtrac
 							<Icon className="wallet__icon" theme="filled" type="wallet" />
 							<div className="wallet__balance">
 								<div>Số dư</div>
-								<div>VND {formatVND(wallet.electronic)} </div>
+								<div>
+									{wallet.electronic === null ? '----': `VND ${formatVND(wallet.electronic)}`}
+								</div>
 							</div>
 						</div>
-						{disabled && <Alert message="Bạn không đủ số dư để để mua. Hãy nạp thêm!" type="warning" />}
+						{disabled && <Alert message={wallet.electronic === null ? 'Ví Waza không khả dụng' : 'Bạn không đủ số dư để để mua. Hãy nạp thêm!'} type="warning" />}
 					</div>
 					<p>
 						Bạn sẻ được yêu cầu thanh toán <span>₫{formatVND(combo.value)}</span> / {combo.days} ngày. Tự

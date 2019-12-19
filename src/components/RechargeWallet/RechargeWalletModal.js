@@ -36,10 +36,10 @@ export const RechargeWalletModal = ({ visible, close }) => {
         const money = +rechargeMoney
         dispatch(requestAddCash(money)).then(status => {
             if (status === 200) {
-                message.success(`Bạn đã nạp ${formatVND(money)} VNĐ vào ví tiền mặc.`)
+                message.success(`Bạn đã nạp ${formatVND(money)} VNĐ vào ví tiền mặt.`, 2)
                 setRechargeMoney(50000)
             } else {
-                message.error(`Nạp tiền thất bại!`)
+                message.error(`Nạp tiền thất bại!`, 2)
             }
         })
     }
@@ -47,17 +47,17 @@ export const RechargeWalletModal = ({ visible, close }) => {
         const money = +transferMoney
         dispatch(transferCashToElectronicRequest(money)).then(status => {
             if (status === 200) {
-                message.success(`Bạn đã chuyển ${formatVND(money)} VNĐ từ ví tiền mặc sang ví WAZA.`)
+                message.success(`Bạn đã chuyển ${formatVND(money)} VNĐ từ ví tiền mặt sang ví WAZA.`, 2)
                 setTransferMoney(50000)
                 close()
             } else {
-                message.error(`Chuyển tiền thất bại!`)
+                message.error(`Chuyển tiền thất bại!`, 2)
             }
         })
     }
     return (
         <Modal
-            title="Chuyển tiền từ ví tiền mặc sang ví WAZA"
+            title="Chuyển tiền từ ví tiền mặt sang ví WAZA"
             onCancel={close}
             onOk={close}
             visible={visible}
@@ -68,7 +68,7 @@ export const RechargeWalletModal = ({ visible, close }) => {
         >
             <Form layout="horizontal">
                 <div >
-                    <p className="cash">Ví tiền mặc: {formatVND(cash)} VNĐ</p>
+                    <p className="cash">Ví tiền mặt: {formatVND(cash)} VNĐ</p>
                 </div>
                 <Form.Item label="Nhập số tiền cần nạp:"
                     help="số tiền nạp tối thiểu là 50,000, tối đa 10,000,000 và phải là bội số của 1,000"
@@ -93,7 +93,7 @@ export const RechargeWalletModal = ({ visible, close }) => {
             </Divider>
             <Form layout="horizontal">
                 <Form.Item label="Nhập số tiền cần chuyển:"
-                    help="số tiền chuyển tối thiểu là 50,000, tối đa 10,000,000 và phải là bội số của 1,000 và phải bé hơn số tiền mặc hiện có"
+                    help="số tiền chuyển tối thiểu là 50,000, tối đa 10,000,000 và phải là bội số của 1,000 và phải bé hơn số tiền mặt hiện có"
                     validateStatus={transferMoneyHasError ? 'error' : 'success'}
                 >
                     <InputNumber
