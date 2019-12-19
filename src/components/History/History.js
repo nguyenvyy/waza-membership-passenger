@@ -8,7 +8,7 @@ import { LoadingAdvance } from '../common/Loading/Loading'
 import { HandleError } from '../common/HandlError/HandleError'
 import { NotFoundData } from '../common/NotFound/NotFound'
 import { Empty } from '../common/Empty/Empty'
-import { Button, Icon } from 'antd'
+import { Icon } from 'antd'
 
 const History = () => {
     const dispatch = useDispatch()
