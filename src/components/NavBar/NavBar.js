@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom'
 import './NavBar.scss'
 import { Icon } from 'antd'
 
- const NavBar = ({collapsed}) => {
-
+const NavBar = ({collapsed}) => {
     return (
         <nav className={`bottom-nav ${collapsed ? 'bottom-nav--collapsed' : ''}`}>
             <div className="bottom-nav__item d-flex-center">
@@ -15,9 +14,9 @@ import { Icon } from 'antd'
                 </NavLink>
             </div>
             <div className="bottom-nav__item d-flex-center">
-                <NavLink to="/p/active" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active">
+                <NavLink to="/p/history" className="bottom-nav__item-content" activeClassName="bottom-nav__item--active">
                     <Icon type="unordered-list" />
-                    <span>Hoạt dộng</span>
+                    <span>Lịch sử</span>
                 </NavLink>
             </div>
             <div className="bottom-nav__item d-flex-center">
