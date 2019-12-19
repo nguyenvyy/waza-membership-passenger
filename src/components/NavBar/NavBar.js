@@ -3,10 +3,8 @@ import { NavLink } from 'react-router-dom'
 
 import './NavBar.scss'
 import { Icon } from 'antd'
-import { getHistories } from '../../redux/actions/history/service'
 
 const NavBar = ({collapsed}) => {
-    getHistories().then(res => console.log(res))
     return (
         <nav className={`bottom-nav ${collapsed ? 'bottom-nav--collapsed' : ''}`}>
             <div className="bottom-nav__item d-flex-center">
