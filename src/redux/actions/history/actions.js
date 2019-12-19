@@ -1,10 +1,10 @@
-import { SEND_REQUEST_HISTORY, STOP_REQUEST_HISTORY, CATCH_ERROR_HISTORY, CLEAR_HISTORY } from "./types";
+import { SEND_REQUEST_HISTORY, STOP_REQUEST_HISTORY, CATCH_ERROR_HISTORY, CLEAR_HISTORY, RECEIVE_HISTORY } from "./types";
 import { getHistoryAPI } from "./service";
 
 const sendRequestHistory = () => ({type: SEND_REQUEST_HISTORY})
 const stopRequestHistory = () =>({type: STOP_REQUEST_HISTORY})
 const catchErrorHistory = () => ({type: CATCH_ERROR_HISTORY})
-const receiveHistory = history => ({type: receiveHistory, history})
+const receiveHistory = history => ({type: RECEIVE_HISTORY, history})
 export const clearHistory  = () => ({type: CLEAR_HISTORY})
 export const fetchHistory = () => async (dispatch, getState) => {
     dispatch(sendRequestHistory())

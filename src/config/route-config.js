@@ -18,6 +18,7 @@ const MyComboPage = lazy(() => import('../redux/container/MyCombo'))
 const VoucherPage = lazy(() => import('../components/Voucher/Voucher'))
 const ViewVoucher = lazy(() => import('../components/Voucher/VoucherView/VoucherView'))
 const ComboDetailPage = lazy(() => import('../components/ComboDetail/ComboDetail'));
+const HistoryPage = lazy(() => import('../components/History/History'))
 export const routes = [
     {
         path: '/',
@@ -71,6 +72,10 @@ export const routes = [
             {
                 path: '/p/user',
                 component: AccountPage
+            },
+            {
+                path: '/p/history',
+                component: HistoryPage
             },
             {
                 path: '/p/voucher',

@@ -15,13 +15,16 @@ export const getHistoryAPI = (id) => {
         setTimeout(() => {
             rs(Array.from({length: 20}, () => ({
                 _id: uuid(),
-                action: actions[randomNumberInRange(0, 3)],
+                action: actions[randomNumberInRange(0, 3)] + '---mockAPI',
                 title: `Combo XX${randomNumberInRange(1, 100)}`,
                 date: dateCreator()
 
             })))
         }, 2000)
     })
-        .then(res => res) // {cash: number, electronic: number}
+        .then(res => {
+            // sort
+            return res.sort((a,b) => b.date - a.date)
+        }) // {cash: number, electronic: number}
         .catch(_ => 400)
 }
