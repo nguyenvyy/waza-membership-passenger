@@ -45,7 +45,7 @@ export const MyComboCard = ({ combo }) => {
 
 	const handleStopRenew = () => {
 		setLoading(true)
-		dispatch(requestStopAutoRenew(combo._id)).then(status => {
+		dispatch(requestStopAutoRenew(combo.combo_id)).then(status => {
 			setLoading(false)
 			if (status === 200) {
 				message.success("Dừng gia hạn thành công", 2)
@@ -57,7 +57,7 @@ export const MyComboCard = ({ combo }) => {
 
 	const handleAutoRenew = () => {
 		setLoading(true)
-		dispatch(requestAutoRenew(combo._id)).then(status => {
+		dispatch(requestAutoRenew(combo.combo_id)).then(status => {
 			setLoading(false)
 			if (status === 200) {
 				message.success("Tự động gia hạn thành công", 2)

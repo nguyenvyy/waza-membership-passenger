@@ -48,8 +48,10 @@ export const myComboReducer = (state = initState, action) => {
 			};
 		case AUTO_RENEW: {
 			let newItems = state.items.slice();
-			const stopIndex = newItems.findIndex((item) => item._id === action.comboId);
-			newItems.splice(stopIndex, 1, {...newItems[stopIndex], autoRenew: true});
+			const stopIndex = newItems.findIndex((item) => item.combo_id === action.comboId);
+			if(stopIndex !== -1) {
+				newItems.splice(stopIndex, 1, {...newItems[stopIndex], autoRenew: true});
+			}
 			return {
 				...state,
 				items: newItems
@@ -57,8 +59,10 @@ export const myComboReducer = (state = initState, action) => {
 		}
 		case STOP_AUTO_RENEW:{
 			let newItems = state.items.slice();
-			const stopIndex = newItems.findIndex((item) => item._id === action.comboId);
-			newItems.splice(stopIndex, 1, {...newItems[stopIndex], autoRenew: false});
+			const stopIndex = newItems.findIndex((item) => item.combo_id === action.comboId);
+			if(stopIndex !== -1) {
+				newItems.splice(stopIndex, 1, {...newItems[stopIndex], autoRenew: false});
+			}
 			return {
 				...state,
 				items: newItems
