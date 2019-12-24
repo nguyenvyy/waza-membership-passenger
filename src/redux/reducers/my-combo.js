@@ -3,7 +3,8 @@ import {
 	STOP_REQUEST,
 	RECEIVE_BOUGHT_COMBO,
 	RECEIVE_MY_COMBOS,
-	STOP_COMBO,
+	STOP_AUTO_RENEW,
+	AUTO_RENEW,
 	CATCH_ERROR_MY_COMBO,
 	CLEAR_MY_COMBOS
 } from '../actions/my-combos/types';
@@ -45,14 +46,24 @@ export const myComboReducer = (state = initState, action) => {
 				items: [ ...action.myCombos ],
 				isFetched: true
 			};
-		case STOP_COMBO:
+		case AUTO_RENEW: {
 			let newItems = state.items.slice();
-			const stopIndex = newItems.findIndex((item) => item._id === action.stopedCombo._id);
-			newItems.splice(stopIndex, 1, action.stopedCombo);
+			const stopIndex = newItems.findIndex((item) => item._id === action.comboId);
+			newItems.splice(stopIndex, 1, {...newItems[stopIndex], autoRenew: true});
 			return {
 				...state,
 				items: newItems
-			};
+			}
+		}
+		case STOP_AUTO_RENEW:{
+			let newItems = state.items.slice();
+			const stopIndex = newItems.findIndex((item) => item._id === action.comboId);
+			newItems.splice(stopIndex, 1, {...newItems[stopIndex], autoRenew: false});
+			return {
+				...state,
+				items: newItems
+			}
+		}
 		case CLEAR_MY_COMBOS:
 			return {...initState}
 		default:

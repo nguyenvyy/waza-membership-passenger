@@ -24,14 +24,14 @@ export const Payment = ({ combo, wallet, user, history, requestBuyCombo, subtrac
 			setIsBuying(false);
 			switch (status) {
 				case 200:
-					message.success('Đã mua thành công');
+					message.success('Đã mua thành công', 2);
 					subtractEMoney(combo.value)
 					break;
 				case 405:
-					message.warn('Gói hội viên đang được xử dụng');
+					message.warn('Gói hội viên đang được xử dụng', 2);
 					break;
 				default:
-					message.error('Mua thất bại, vui lòng kiểm tra kết nối mạng');
+					message.error('Mua thất bại, vui lòng kiểm tra kết nối mạng', 2);
 					break;
 			}
 		});
