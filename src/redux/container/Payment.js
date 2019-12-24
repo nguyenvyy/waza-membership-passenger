@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 import { Payment } from '../../components/Payment/Payment'
 import { requestBuyCombo } from '../actions/my-combos/actions'
 import { subtractEMoney } from '../actions/wallet/actions'
+import { fetchHistory } from '../actions/history/actions'
+import { fetchNotification } from '../actions/notification/actions'
 const mapState = (state, ownProps) => {
     const {  auth: { user }, wallet } = state
     const { location, history } = ownProps
@@ -20,7 +22,11 @@ const mapState = (state, ownProps) => {
 
 const mapDispatch = {
     requestBuyCombo,
-    subtractEMoney
+    subtractEMoney,
+    fetchHistory,
+    fetchNotification
 }
+
+
 
 export default connect(mapState, mapDispatch)(Payment)

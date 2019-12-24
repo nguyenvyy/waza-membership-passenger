@@ -11,7 +11,7 @@ export const fetchHistory = () => async (dispatch, getState) => {
     try {
         const id = getState().auth.user && getState().auth.user._id
         if(!id) throw new Error(id)
-        const history = await getHistoryAPI()
+        const history = await getHistoryAPI(id)
         if(history === 400) throw new Error(history)
         dispatch(receiveHistory(history)) 
     } catch (error) {

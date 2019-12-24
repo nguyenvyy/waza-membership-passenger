@@ -19,6 +19,7 @@ const VoucherPage = lazy(() => import('../components/Voucher/Voucher'))
 const ViewVoucher = lazy(() => import('../components/Voucher/VoucherView/VoucherView'))
 const ComboDetailPage = lazy(() => import('../components/ComboDetail/ComboDetail'));
 const HistoryPage = lazy(() => import('../components/History/History'))
+const NotificationPage =  lazy(() => import('../components/Notification/Notification'))
 export const routes = [
     {
         path: '/',
@@ -76,6 +77,10 @@ export const routes = [
             {
                 path: '/p/history',
                 component: HistoryPage
+            },
+            {
+                path: '/p/notification',
+                component: NotificationPage
             },
             {
                 path: '/p/voucher',

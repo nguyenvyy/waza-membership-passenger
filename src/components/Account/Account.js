@@ -45,7 +45,7 @@ const Account = () => {
                 <div className="account__header d-flex-center">
                     <div className="img-wrapper d-flex-center">
                         {imgErorr ? <img src={userDefault} alt="user" /> :
-                            <img onError={addDefaultSrc} src={user.image} alt="user" />}
+                            <img onError={addDefaultSrc} src={user.image+""} alt="user" />}
                     </div>
                     <div className="user-name">{user.fullName}</div>
                 </div>
