@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Modal, Form, InputNumber, Button, message, Divider } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -55,8 +55,6 @@ export const RechargeWalletModal = ({ visible, close }) => {
             }
         })
     }
-    // useEffect(() => {
-    // })
     return (
         <Modal
             title="Chuyển tiền từ ví tiền mặt sang ví WAZA"
