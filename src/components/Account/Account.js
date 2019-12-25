@@ -6,10 +6,12 @@ import { formatVND, clearCookie } from '../../utils';
 import { Button, Tag } from 'antd';
 import { clearAuth } from '../../redux/actions/auth/actions';
 import { clearMyCombo } from '../../redux/actions/my-combos/actions'
+import { clearHistory } from '../../redux/actions/history/actions'
 import userDefault from '../../asset/img/usersvg.svg'
 import { fetchRanks } from '../../redux/actions/rank-actions/action';
 import { cookieName } from '../../constant';
 import { clearWallet } from '../../redux/actions/wallet/actions';
+import { clearNotification } from '../../redux/actions/notification/actions';
 const Account = () => {
     const dispatch = useDispatch();
     const { items: ranks } = useSelector(state => state.rank)
@@ -29,6 +31,8 @@ const Account = () => {
     }, [user, ranks])
     const handleLogout = () => {
         clearCookie(cookieName)
+        dispatch(clearHistory())
+        dispatch(clearNotification())
         dispatch(clearAuth())
         dispatch(clearMyCombo())
         dispatch(clearWallet())

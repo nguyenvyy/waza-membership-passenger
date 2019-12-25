@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { Modal, Form, InputNumber, Button, message, Divider } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -55,6 +55,8 @@ export const RechargeWalletModal = ({ visible, close }) => {
             }
         })
     }
+    // useEffect(() => {
+    // })
     return (
         <Modal
             title="Chuyển tiền từ ví tiền mặt sang ví WAZA"
@@ -63,7 +65,7 @@ export const RechargeWalletModal = ({ visible, close }) => {
             visible={visible}
             footer={[
                 <Button onClick={close} key="cancel">Quay lai</Button>,
-                <Button disabled={rechargeMoneyHasError} loading={isFetching} onClick={handleTransferMoney} key="ok">Chuyển tiền</Button>,
+                <Button disabled={transferMoneyHasError} loading={isFetching} onClick={handleTransferMoney} key="ok">Chuyển tiền</Button>,
             ]}
         >
             <Form layout="horizontal">
@@ -89,7 +91,7 @@ export const RechargeWalletModal = ({ visible, close }) => {
                 </Form.Item>
             </Form>
             <Divider >
-                <Button loading={isFetching} onClick={handleRechargeMoney}>Nạp</Button>
+                <Button disabled={rechargeMoneyHasError} loading={isFetching} onClick={handleRechargeMoney}>Nạp</Button>
             </Divider>
             <Form layout="horizontal">
                 <Form.Item label="Nhập số tiền cần chuyển:"

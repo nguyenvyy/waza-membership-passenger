@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../Voucher.scss'
 import { useHistory } from 'react-router-dom'
 import { Icon } from 'antd';
 
+
 const VoucherView = () => {
+    
+    
+    useEffect(() => {
+        console.log('aaaa')
+    })
     const history = useHistory();
     return (
         <div className="voucher-view">

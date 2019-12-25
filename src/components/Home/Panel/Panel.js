@@ -27,14 +27,12 @@ export const Panel = () => {
                             Số dư tài khoản:{wallet.electronic !== null ? ` ${formatVND(wallet.electronic)} VNĐ` : ` ----`}
                         </span>
                         {
-                            wallet.isFetched && <Icon onClick={openRechargeModal} type="plus" style={{ color: '#531280', fontSize: '1.2em' }} />
+                            (wallet.isFetched === true && wallet.isFetching === false) && <Icon onClick={openRechargeModal} type="plus" style={{ color: '#531280', fontSize: '1.2em' }} />
                         }
                         {
                             wallet.isFetching && <Icon type="sync" spin style={{ color: '#531280', fontSize: '1.2em' }} />
                         }
-                        {
-                            wallet.hasError && <Icon onClick={reload} type="reload" style={{ color: 'red', fontSize: '1.2em' }} />
-                        }
+                        <Icon onClick={reload} type="reload" style={{ color: '#531280', fontSize: '1.2em' }} />
                         <RechargeWalletModal
                             visible={visibleRechargeModal}
                             open={openRechargeModal}
