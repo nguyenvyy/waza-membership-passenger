@@ -7,8 +7,8 @@ import { cookieName } from '../../../constant'
 import { getWallet } from '../../../redux/actions/wallet/actions'
 
 export const LoginForm = ({ isLoading, dispatch }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('nguyenvy@gmail.com');
+    const [password, setPassword] = useState('anhhung');
     const [isRemember, setIsRemember] = useState(false)
     useEffect(() => {
         const userStorage = getCookie(cookieName)
